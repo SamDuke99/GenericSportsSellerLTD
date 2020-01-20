@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEquipmentBackOffice", "SportEquipmentBackOffice\SportEquipmentBackOffice.csproj", "{9B5F58AE-F9D2-448E-8D48-106F5404E41E}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SportEquipmentFrontOffice", "SportEquipmentFrontOffice\", "{B20E1B08-5550-492B-9DA4-D4FFBA8E73B8}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_5123"
+		Debug.AspNetCompiler.PhysicalPath = "SportEquipmentFrontOffice\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5123\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_5123"
+		Release.AspNetCompiler.PhysicalPath = "SportEquipmentFrontOffice\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_5123\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "5123"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEquipmentClasses", "SportEquipmentClasses\SportEquipmentClasses.csproj", "{99A20D53-76DD-4945-A035-87E40AEFBBC2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEquipmentTesting", "SportEquipmentTesting\SportEquipmentTesting.csproj", "{4D4800C4-7E78-4921-8515-A343E1518F0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B5F58AE-F9D2-448E-8D48-106F5404E41E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B5F58AE-F9D2-448E-8D48-106F5404E41E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B5F58AE-F9D2-448E-8D48-106F5404E41E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B5F58AE-F9D2-448E-8D48-106F5404E41E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B20E1B08-5550-492B-9DA4-D4FFBA8E73B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B20E1B08-5550-492B-9DA4-D4FFBA8E73B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B20E1B08-5550-492B-9DA4-D4FFBA8E73B8}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B20E1B08-5550-492B-9DA4-D4FFBA8E73B8}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{99A20D53-76DD-4945-A035-87E40AEFBBC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99A20D53-76DD-4945-A035-87E40AEFBBC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99A20D53-76DD-4945-A035-87E40AEFBBC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99A20D53-76DD-4945-A035-87E40AEFBBC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D4800C4-7E78-4921-8515-A343E1518F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D4800C4-7E78-4921-8515-A343E1518F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D4800C4-7E78-4921-8515-A343E1518F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D4800C4-7E78-4921-8515-A343E1518F0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC3CA071-A2E0-4234-86FB-083B8701267C}
+	EndGlobalSection
+EndGlobal
