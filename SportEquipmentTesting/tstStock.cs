@@ -13,5 +13,19 @@ namespace SportEquipmentTesting
             clsStock AnStock = new clsStock();
             Assert.IsNotNull(AnStock);
         }
+
+        public void ProductIDOK()
+        {
+            clsStock AnProduct = new clsStock();
+            Int32 TestData = 1;
+            AnProduct.ProductId = TestData;
+            Assert.AreEqual(AnProduct.ProductId, TestData);
+        }
+
+        //ProductDetails
+        //Price
+        //DateAcquired
+        //InStock
     }
+
 }
