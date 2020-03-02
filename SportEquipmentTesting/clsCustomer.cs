@@ -4,6 +4,7 @@ namespace SportEquipmentTesting
 {
     public class clsCustomer
     {
+
         public bool Active { get; internal set; }
         public DateTime DateAdded { get; internal set; }
         public int CountyNo { get; internal set; }
