@@ -11,6 +11,7 @@ namespace SportEquipmentTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             Assert.IsNotNull(ACustomer);
+
         }
     }
 }
