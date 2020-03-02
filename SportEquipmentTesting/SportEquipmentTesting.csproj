@@ -51,11 +51,11 @@
   <ItemGroup>
     <Compile Include="clsCustomer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
+
     <Compile Include="tstOrder.cs" />
-=======
+
     <Compile Include="tstCustomer.cs" />
->>>>>>> SamsBranch
+
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
