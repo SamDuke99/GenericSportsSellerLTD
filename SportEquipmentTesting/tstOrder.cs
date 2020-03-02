@@ -7,8 +7,6 @@ namespace SportEquipmentTesting
 	[TestClass]
 	public class tstOrder
 	{
-		
-		
             [TestMethod]
             public void InstanceOK()
             {
