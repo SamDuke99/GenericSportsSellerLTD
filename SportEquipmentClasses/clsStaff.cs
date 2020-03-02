@@ -13,6 +13,5 @@ namespace SportEquipmentClasses
         public string Password { get; set; }
         public DateTime HireDate { get; set; }
         public bool IsActive { get; set; }
-        
     }
 }
