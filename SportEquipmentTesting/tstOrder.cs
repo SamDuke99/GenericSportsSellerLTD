@@ -48,7 +48,7 @@ namespace SportEquipmentTesting
 
         //OrderCompleted
             [TestMethod]
-            public void OrderNumberOK()
+            public void OrderCompletedOK()
             {
                 clsOrder AOrder = new clsOrder();
                 Boolean TestData = true;
@@ -58,7 +58,7 @@ namespace SportEquipmentTesting
 
         //OrderPrice
             [TestMethod]
-            public void OrderNumberOK()
+            public void OrderPriceOK()
             {
                 clsOrder AOrder = new clsOrder();
                 float TestData = 6.9;
@@ -68,7 +68,7 @@ namespace SportEquipmentTesting
 
         //CustomerID
             [TestMethod]
-            public void OrderNumberOK()
+            public void OrderCustomerIDOK()
             {
                 clsOrder AOrder = new clsOrder();
                 Int32 TestData = 2;
@@ -78,7 +78,7 @@ namespace SportEquipmentTesting
 
         //StaffID
             [TestMethod]
-            public void OrderNumberOK()
+            public void OrderStaffIDrOK()
             {
                 clsOrder AOrder = new clsOrder();
                 Int32 TestData = 3;

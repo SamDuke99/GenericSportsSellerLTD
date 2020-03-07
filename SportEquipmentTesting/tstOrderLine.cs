@@ -17,7 +17,7 @@ namespace SportEquipmentTesting
 
         //OrderLineNumber
         [TestMethod]
-        public void OrderNumberOK()
+        public void OrderLineNumberOK()
         {
             clsOrderLine AnOrderLine = new clsOrderLine();
             Int32 TestData = 1;
@@ -37,7 +37,7 @@ namespace SportEquipmentTesting
 
         //ProductID
         [TestMethod]
-        public void OrderNumberOK()
+        public void OrderProductIDOK()
         {
             clsOrderLine AnOrderLine = new clsOrderLine();
             Int32 TestData = 3;
