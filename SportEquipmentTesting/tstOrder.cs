@@ -61,7 +61,7 @@ namespace SportEquipmentTesting
             public void OrderPriceOK()
             {
                 clsOrder AOrder = new clsOrder();
-                float TestData = 6.9;
+                float TestData = 6;
                 AOrder.OrderPrice = TestData;
                 Assert.AreEqual(AOrder.OrderPrice, TestData);
             }
