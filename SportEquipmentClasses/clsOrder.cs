@@ -10,5 +10,6 @@ namespace SportEquipmentClasses
         public bool OrderCompleted { get; set; }
         public float OrderPrice { get; set; }
         public int CustomerID { get; set; }
+        public int StaffID { get; set; }
     }
 }

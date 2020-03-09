@@ -78,14 +78,13 @@ namespace SportEquipmentTesting
 
         //StaffID
             [TestMethod]
-            public void OrderStaffIDrOK()
+            public void OrderStaffIDOK()
             {
                 clsOrder AOrder = new clsOrder();
                 Int32 TestData = 3;
-                AOrder.OrderPrice = TestData;
-                Assert.AreEqual(AOrder.OrderPrice, TestData);
+                AOrder.StaffID = TestData;
+                Assert.AreEqual(AOrder.StaffID, TestData);
             }
 
     }
     }
-

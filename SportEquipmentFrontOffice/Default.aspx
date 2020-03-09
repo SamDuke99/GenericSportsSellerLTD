@@ -22,7 +22,10 @@
         <asp:TextBox ID="txtOrderDescription" runat="server" style="z-index: 1; left: 181px; top: 160px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtOrderDatePlaced" runat="server" style="z-index: 1; left: 182px; top: 201px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtOrderPrice" runat="server" style="z-index: 1; left: 177px; top: 277px; position: absolute"></asp:TextBox>
-        <asp:CheckBox ID="checkOrderCompleted" runat="server" style="z-index: 1; left: 182px; top: 237px; position: absolute" />
+        <asp:TextBox ID="txtOrderNumber" runat="server" style="z-index: 1; left: 181px; top: 116px; position: absolute"></asp:TextBox>
+        <p>
+            &nbsp;</p>
+        <asp:TextBox ID="txtOrderCompleted" runat="server" style="z-index: 1; left: 179px; top: 236px; position: absolute; margin-top: 0px"></asp:TextBox>
     </form>
 </body>
 </html>
