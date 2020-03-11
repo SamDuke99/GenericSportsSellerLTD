@@ -24,132 +24,300 @@ namespace SportEquipmentTesting
         }
 
         [TestMethod]
-        public void FullNamePropertyOK() {
+        public void FullNamePropertyOK()
+        {
             clsStaff person = new clsStaff();
             person.Fullname = "Mikhail Tal";
             Assert.AreEqual(person.Fullname, "Mikhail Tal");
         }
 
         [TestMethod]
-        public void PositionPropertyOK() {
+        public void PositionPropertyOK()
+        {
             clsStaff person = new clsStaff();
             person.Position = "admin";
             Assert.AreEqual(person.Position, "admin");
         }
 
         [TestMethod]
-        public void DepartmentPropertyOK() {
+        public void DepartmentPropertyOK()
+        {
             clsStaff person = new clsStaff();
             person.Department = "martial arts";
             Assert.AreEqual(person.Department, "martial arts");
         }
 
         [TestMethod]
-        public void PasswordPropertyOK() {
+        public void PasswordPropertyOK()
+        {
             clsStaff person = new clsStaff();
             person.Password = "qazwsx";
             Assert.AreEqual(person.Password, "qazwsx");
         }
 
         [TestMethod]
-        public void HireDatePropertyOK() {
+        public void HireDatePropertyOK()
+        {
             clsStaff person = new clsStaff();
             person.HireDate = DateTime.Now.Date;
             Assert.AreEqual(person.HireDate, DateTime.Now.Date);
         }
 
         [TestMethod]
-        public void IsActivePropertyOK() {
+        public void IsActivePropertyOK()
+        {
             clsStaff person = new clsStaff();
             person.IsActive = false;
             Assert.AreEqual(person.IsActive, false);
         }
 
         [TestMethod]
-        public void AddTest0() {
-            clsStaff staffMember = new clsStaff(4096, "Robert Jones", "admin", "martial arts", "chicken", new DateTime(2002, 8, 12), true);
-            clsStaffCollection staffList = new clsStaffCollection();
-            staffList.Add(staffMember);
-            Assert.AreEqual(staffList.StaffList.Count, 1);
-        }
-
-        [TestMethod]
-        public void AddTest1()
+        public void FindMethodOK()
         {
-            clsStaff staffMember = new clsStaff(4096, "Robert Jones", "admin", "martial arts", "chicken", DateTime.Now.Date, true);
-            clsStaffCollection staffList = new clsStaffCollection();
-            staffList.Add(staffMember);
-            Assert.AreEqual(staffList.StaffList[0].Id, 4096);
-            Assert.AreEqual(staffList.StaffList[0].Fullname, "Robert Jones");
-            Assert.AreEqual(staffList.StaffList[0].Position, "admin");
-            Assert.AreEqual(staffList.StaffList[0].Department, "martial arts");
-            Assert.AreEqual(staffList.StaffList[0].Password, "chicken");
-            Assert.AreEqual(staffList.StaffList[0].HireDate, DateTime.Now.Date);
-            Assert.AreEqual(staffList.StaffList[0].IsActive, true);
+            clsStaff staffMember = new clsStaff();
+            bool found = false;
+            int staffId = 1;
+            found = staffMember.Find(staffId);
+            Assert.IsTrue(found);
         }
 
         [TestMethod]
-        public void FindTest0()
+        public void TestStaffIdFound()
         {
-            clsStaff staffMember = new clsStaff(4096, "Robert Jones", "admin", "martial arts", "chicken", new DateTime(2002, 8, 12), true);
-            clsStaffCollection staffList = new clsStaffCollection();
-            staffList.Add(staffMember);
-            Assert.IsNotNull(staffList.Find(4096));
+            clsStaff staffMember = new clsStaff();
+            bool found = false;
+            bool ok = true;
+            int staffId = 1;
+            found = staffMember.Find(staffId);
+            if (staffMember.Id != 1)
+            {
+                ok = false;
+            }
+
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
-        public void FindTest1() {
-            clsStaffCollection staffList = new clsStaffCollection();
-            Assert.IsNull(staffList.Find(4096));
+        public void TestStaffFullnameFound()
+        {
+            clsStaff staffMember = new clsStaff();
+            bool found = false;
+            bool ok = true;
+            int staffId = 1;
+            found = staffMember.Find(staffId);
+            if (staffMember.Fullname != "Robert Lewandowski")
+            {
+                ok = false;
+            }
+
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
-        public void FindTest2() {
-            clsStaff staffMember = new clsStaff(4096, "Robert Jones", "admin", "martial arts", "chicken", DateTime.Now.Date, true);
-            clsStaffCollection staffList = new clsStaffCollection();
-            staffList.Add(staffMember);
-            var found = staffList.Find(4096);
-            Assert.AreEqual(found.Id, 4096);
-            Assert.AreEqual(found.Fullname, "Robert Jones");
-            Assert.AreEqual(found.Position, "admin");
-            Assert.AreEqual(found.Department, "martial arts");
-            Assert.AreEqual(found.Password, "chicken");
-            Assert.AreEqual(found.HireDate, DateTime.Now.Date);
-            Assert.AreEqual(found.IsActive, true);
+        public void TestStaffPasswordFound()
+        {
+            clsStaff staffMember = new clsStaff();
+            bool found = false;
+            bool ok = true;
+            int staffId = 1;
+            found = staffMember.Find(staffId);
+            if (staffMember.Password != "chicken")
+            {
+                ok = false;
+            }
+
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
-        public void DeleteTest0() {
-            clsStaff staffMember = new clsStaff(4096, "Robert Jones", "admin", "martial arts", "chicken", DateTime.Now.Date, true);
-            clsStaffCollection staffList = new clsStaffCollection();
-            staffList.Add(staffMember);
-            staffList.Delete(4096);
-            Assert.AreEqual(staffList.StaffList.Count, 0);
+        public void TestStaffHireDateFound()
+        {
+            clsStaff staffMember = new clsStaff();
+            bool found = false;
+            bool ok = true;
+            int staffId = 1;
+            found = staffMember.Find(staffId);
+            if (staffMember.HireDate != Convert.ToDateTime("16/12/2002"))
+            {
+                ok = false;
+            }
+
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
-        public void FilterTest0() {
-            clsStaff staffMember0 = new clsStaff(4096, "Robert Jones", "admin", "martial arts", "chicken", DateTime.Now.Date, true);
-            clsStaff staffMember1 = new clsStaff(1024, "Robert Jones", "seller", "martial arts", "chicken", DateTime.Now.Date, true);
-            clsStaffCollection staffList = new clsStaffCollection();
-            staffList.Add(staffMember0);
-            staffList.Add(staffMember1);
-            clsStaffCollection filtered = staffList.Filter(clsStaffCollection.filterAdmin);
-            Assert.AreEqual(filtered.StaffList.Count, 1);
+        public void TestStaffPosition()
+        {
+            clsStaff staffMember = new clsStaff();
+            bool found = false;
+            bool ok = true;
+            int staffId = 1;
+            found = staffMember.Find(staffId);
+            if (staffMember.Position != "admin")
+            {
+                ok = false;
+            }
+
+            Assert.IsTrue(ok);
         }
 
         [TestMethod]
-        public void FilterTest1() {
-            clsStaff staffMember0 = new clsStaff(4096, "Mikhail Tal", "admin", "martial arts", "chicken", DateTime.Now.Date, false);
-            clsStaff staffMember1 = new clsStaff(49374, "Bobby Fischer", "admin", "martial arts", "chicken", DateTime.Now.Date, false);
-            clsStaff staffMember2 = new clsStaff(1024, "Robert Jones", "seller", "martial arts", "chicken", DateTime.Now.Date, true);
-            clsStaffCollection staffList = new clsStaffCollection();
-            staffList.Add(staffMember0);
-            staffList.Add(staffMember1);
-            staffList.Add(staffMember2);
-            clsStaffCollection filteredStaff = staffList.Filter(person => person.IsActive);
-            Assert.AreEqual(filteredStaff.StaffList.Count, 1);
+        public void TestStaffDepartment()
+        {
+            clsStaff staffMember = new clsStaff();
+            bool found = false;
+            bool ok = true;
+            int staffId = 1;
+            found = staffMember.Find(staffId);
+            if (staffMember.Department != "asdf")
+            {
+                ok = false;
+            }
+
+            Assert.IsTrue(ok);
         }
 
+        [TestMethod]
+        public void TestStaffIsActive()
+        {
+            clsStaff staffMember = new clsStaff();
+            bool found = false;
+            bool ok = true;
+            int staffId = 1;
+            found = staffMember.Find(staffId);
+            if (!staffMember.IsActive)
+            {
+                ok = false;
+            }
+
+            Assert.IsTrue(ok);
+        }
+
+        [TestMethod]
+        public void StaffIdExtremeMin()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "-16";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMinLessOne()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "-1";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMinBoundry()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "0";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMinOneMore()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "1";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdExtremeMax()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "1024";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMaxBoundry()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "256";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMaxOneLess()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "255";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMaxOneMore()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "257";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdMid()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "128";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdInvalid0()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "Abc";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdInvalid1()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = staffMember.ToString();
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdInvalid2()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = DateTime.Now.ToString();
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdInvalid3()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "0x34";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffIdOther0()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
     }
+        
 }

@@ -9,6 +9,29 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEquipmentClasses", "Sp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SportEquipmentTesting", "SportEquipmentTesting\SportEquipmentTesting.csproj", "{4D4800C4-7E78-4921-8515-A343E1518F0D}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SportsEquipmentFrontOffice", "SportsEquipmentFrontOffice\", "{416DDB33-01F1-48AF-B693-FC937FAD67D2}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{99a20d53-76dd-4945-a035-87e40aefbbc2}|SportEquipmentClasses.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_50525"
+		Debug.AspNetCompiler.PhysicalPath = "SportsEquipmentFrontOffice\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50525\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_50525"
+		Release.AspNetCompiler.PhysicalPath = "SportsEquipmentFrontOffice\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_50525\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "50525"
+		SlnRelativePath = "SportsEquipmentFrontOffice\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +50,10 @@ Global
 		{4D4800C4-7E78-4921-8515-A343E1518F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D4800C4-7E78-4921-8515-A343E1518F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D4800C4-7E78-4921-8515-A343E1518F0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{416DDB33-01F1-48AF-B693-FC937FAD67D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{416DDB33-01F1-48AF-B693-FC937FAD67D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{416DDB33-01F1-48AF-B693-FC937FAD67D2}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{416DDB33-01F1-48AF-B693-FC937FAD67D2}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
