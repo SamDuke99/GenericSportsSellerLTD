@@ -86,15 +86,82 @@ namespace SportEquipmentClasses
         public string ValidFullname(string staffFullname)
         {
             if (staffFullname.Length == 0)
-                return "This field is required!";
+                return "Full name must be at least 1 character long!";
+
+            if (staffFullname.Length > 32)
+                return "Full name cannot be longer than 32 characters!";
 
             foreach (char c in staffFullname)
             {
-                if (!Char.IsLetter(c))
-                    return "Full name must contain only letters!";
+                if ((!Char.IsLetter(c) && c != ' ') || c >= sbyte.MaxValue)
+                    return "Full name must contain only ascii letters!";
             }
 
             return "";
+        }
+
+        // length 8 <= _ <= 32
+        // allowed charsL a-z A-Z 0-9 # @ ? ! % $ & *
+        // ascii only
+        public string ValidPassword(string staffPassword)
+        {
+            string errorMsg = "";
+
+            if (staffPassword.Length < 8)
+                errorMsg = "Password must be at least 8 characters long!";
+            else if (staffPassword.Length > 32)
+                errorMsg = "Password must be no longer than 32 characters!";
+            else
+            {
+                foreach (char c in staffPassword)
+                {
+                    if (c >= sbyte.MaxValue)
+                    {
+                        errorMsg = "Password must contain only ascii characters!";
+                        break;
+                    }
+                    
+                    if (!Char.IsLetter(c))
+                    {
+                        if ("#@?!%$&*".IndexOf(c) == -1)
+                            errorMsg = "a-z A-Z 0-9 # @ ? ! % $ & * characters are allowd!";
+                    }
+                }
+            }
+            
+
+            return errorMsg;
+        }
+
+        public string ValidHireDate(string staffHireDate)
+        {
+            string errorMsg = "";
+
+            try
+            {
+                DateTime dateTemp = Convert.ToDateTime(staffHireDate);
+            } catch (FormatException)
+            {
+                errorMsg = "Date should be in DD/MM/YYYY format!";
+            }
+
+            return errorMsg;
+        }
+
+        public string ValidPosition(string staffPosition)
+        {
+            if (staffPosition != "admin" && staffPosition != "seller" && staffPosition != "manager")
+                return "Allowed positions: admin, seller, manager!";
+            else
+                return "";
+        }
+
+        public string ValidDepartment(string staffDepartment)
+        {
+            if (staffDepartment != "footbll" && staffDepartment != "fitness" && staffDepartment != "martial")
+                return "Allowed departments: football, fitness, martial!";
+            else
+                return "";
         }
 
     }

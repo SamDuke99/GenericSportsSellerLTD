@@ -318,6 +318,215 @@ namespace SportEquipmentTesting
             string errorMsg = staffMember.ValidId(testValue);
             Assert.AreNotEqual(errorMsg, "");
         }
+
+        [TestMethod]
+        public void StaffIdOther1()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "1;DROP DATABASE xyz;";
+            string errorMsg = staffMember.ValidId(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameMinOneLess()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "";
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameMin()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "a";
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameMax()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "".PadRight(32, 'a');
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameMaxOneLess()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "".PadRight(31, 'a');
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameMaxOneMore()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "".PadRight(33, 'a');
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameMinOneMore()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "aa";
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameOther0()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "Żółć";
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameOthr1()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "<script>alert(1);</script>";
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameInvalid1()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "10/11/19";
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameMid()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "".PadRight(17, 'a');
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffFullnameExtremeMx()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "".PadRight(64, 'a');
+            string errorMsg = staffMember.ValidFullname(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordExtremeMin()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "";
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMinOneLess()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "aaaaaaa";
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMin()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "aaaaaaaa";
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMinOneMore()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "aaaaaaaaa";
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMaxOneLess()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "".PadRight(33, 'a');
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMax()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "".PadRight(32, 'a');
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordMid()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "".PadRight(20, 'a');
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordExtremeMax()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "".PadRight(64, 'a');
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordInvalid0()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "11/12/2015";
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordOther0()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "Łódź";
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPasswordOther1()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "password=chicken OR 1=1;";
+            string errorMsg = staffMember.ValidPassword(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+
     }
         
 }

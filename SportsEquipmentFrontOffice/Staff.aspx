@@ -21,21 +21,31 @@
         <br />
         Full Name&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtFullname" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;
+        <asp:Label ID="lblFullname" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         Position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtPosition" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;
+        <asp:Label ID="lblPosition" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         Department&nbsp;&nbsp;
         <asp:TextBox ID="txtDepartment" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblDepartment" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         Password&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;
+        <asp:Label ID="lblPassword" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         Hire Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="txtHireDate" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;
+        <asp:Label ID="lblHireDate" runat="server" ForeColor="Red"></asp:Label>
         <br />
         <br />
         <asp:CheckBox ID="chkActive" runat="server" Text="Active" />

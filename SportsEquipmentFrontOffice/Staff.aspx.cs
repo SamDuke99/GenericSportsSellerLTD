@@ -13,24 +13,77 @@ public partial class AddStaff : System.Web.UI.Page
             
     }
 
+    private void Reset_All()
+    {
+        lblError.Text = "";
+        lblFullname.Text = "";
+        lblHireDate.Text = "";
+        lblDepartment.Text = "";
+        lblPassword.Text = "";
+        lblPosition.Text = "";
+    }
+
     protected void btnOK_click(object sender, EventArgs e)
     {
+        Reset_All();
         clsStaff staffMember = new clsStaff();
-        staffMember.Id = Convert.ToInt32(txtStaffId.Text);
-        staffMember.Fullname = txtFullname.Text;
-        staffMember.Position = txtPosition.Text;
-        staffMember.Department = txtDepartment.Text;
-        staffMember.Password = txtPassword.Text;
-        staffMember.HireDate = Convert.ToDateTime(txtHireDate.Text); // todo catch exception
-        Session["AddStaff"] = staffMember;
-        Response.Redirect("StaffView.aspx");
+        string id = txtStaffId.Text;
+        string password = txtPassword.Text;
+        string fullname = txtFullname.Text;
+        string position = txtPosition.Text;
+        string department = txtDepartment.Text;
+        string hireDate = txtHireDate.Text;
+
+        if (staffMember.ValidId(id) != "") {
+            lblError.Text = staffMember.ValidId(id);
+            return;
+        }
+
+        if (staffMember.ValidFullname(fullname) != "")
+        {
+            lblFullname.Text = staffMember.ValidFullname(fullname);
+            return;
+        }
+
+        if (staffMember.ValidPosition(position) != "")
+        {
+            lblPosition.Text = staffMember.ValidPosition(position);
+            return;
+        }
+
+        if (staffMember.ValidDepartment(department) != "")
+        {
+            lblDepartment.Text = staffMember.ValidDepartment(department);
+            return;
+        }
+
+        if (staffMember.ValidPassword(password) != "")
+        {
+            lblPassword.Text = staffMember.ValidPassword(password);
+            return;
+        }
+
+        if (staffMember.ValidHireDate(hireDate) != "")
+        {
+            lblHireDate.Text = staffMember.ValidHireDate(hireDate);
+            return;
+        }
+
+        staffMember.Id = Convert.ToInt32(id);
+        staffMember.HireDate = Convert.ToDateTime(hireDate);
+        staffMember.Password = password;
+        staffMember.Position = position;
+        staffMember.Department = department;
+        staffMember.Fullname = fullname;
+        staffMember.IsActive = chkActive.Checked;
+
     }
 
 
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
-        lblError.Text = "";
+        Reset_All();
         clsStaff staffMember = new clsStaff();
         
         // Checks if the input is correct
