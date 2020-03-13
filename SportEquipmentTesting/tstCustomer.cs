@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SportEquipmentClasses;
 
 namespace SportEquipmentTesting
 {
@@ -15,141 +16,134 @@ namespace SportEquipmentTesting
         }
 
         [TestMethod]
-        public void ActivePropertyOk()
+        public void VerifiedEmailOK()
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean TestData = true;
-            ACustomer.Active = TestData;
-            Assert.AreEqual(ACustomer.Active, TestData);
+            ACustomer.Verified = TestData;
+            Assert.AreEqual(ACustomer.Verified, TestData);
 
         }
 
         [TestMethod]
-        public void DateAddedPropertyOK()
+        public void DateOfBirthOK()
         {
             clsCustomer ACustomer = new clsCustomer();
             DateTime TestData = DateTime.Now.Date;
-            ACustomer.DateAdded = TestData;
-            Assert.AreEqual(ACustomer.DateAdded, TestData);
+            ACustomer.DateOfBirth = TestData;
+            Assert.AreEqual(ACustomer.DateOfBirth, TestData);
         }
+        
 
-        [TestClass]
-        public class tstAddress
+        [TestMethod]
+        public void CustomerIDOK()
         {
-            [TestMethod]
-            public void InstanceOK()
-            {
-                //create an instance of the class we want to create
-                clsCustomer ACustomer = new clsCustomer();
-                //test to see that it exists
-                Assert.IsNotNull(ACustomer);
-            }
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //create some test data to assign to the property
+            Int32 TestData = 1;
+            //assign the data to the property
+            ACustomer.CustomerID = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(ACustomer.CustomerID, TestData);
+        }
 
-            [TestMethod]
-            public void ActivePropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsCustomer ACustomer = new clsCustomer();
-                //create some test data to assign to the property
-                Boolean TestData = true;
-                //assign the data to the property
-                ACustomer.Active = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(ACustomer.Active, TestData);
-            }
+        [TestMethod]
+        public void UserNameOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //create some test data to assign to the property
+            string TestData = "JoeBloggs";
+            //assign the data to the property
+            ACustomer.UserName = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(ACustomer.UserName, TestData);
+        }
+        [TestMethod]
+        public void PasswordeOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //create some test data to assign to the property
+            string TestData = "password";
+            //assign the data to the property
+            ACustomer.Password = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(ACustomer.Password, TestData);
+        }
+        [TestMethod]
+        public void EmailOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //create some test data to assign to the property
+            string TestData = "JoeBloggs@gmail.com";
+            //assign the data to the property
+            ACustomer.Email = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(ACustomer.Email, TestData);
+        }
 
-            [TestMethod]
-            public void DateAddedPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsCustomer ACustomer = new clsCustomer();
-                //create some test data to assign to the property
-                DateTime TestData = DateTime.Now.Date;
-                //assign the data to the property
-                ACustomer.DateAdded = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(ACustomer.DateAdded, TestData);
-            }
+        [TestMethod]
 
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean to store the result of the validation 
+            Boolean Found = false;
+            //create some test data to use in the method
+            Int32 CustomerID = 1;
+            //invoke the method
+            Found = ACustomer.Find(CustomerID);
+            //test to see that the result is correct
+            Assert.IsTrue(Found);
+        }
 
-            [TestMethod]
-            public void AddressNoPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsCustomer ACustomer = new clsCustomer();
-                //create some test data to assign to the property
-                Int32 TestData = 1;
-                //assign the data to the property
-                ACustomer.AddressNo = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(ACustomer.AddressNo, TestData);
-            }
-
-            [TestMethod]
-            public void CountyNoPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsCustomer ACustomer = new clsCustomer();
-                //create some test data to assign to the property
-                Int32 TestData = 1;
-                //assign the data to the property
-                ACustomer.CountyNo = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(ACustomer.CountyNo, TestData);
-            }
-
-            [TestMethod]
-            public void HouseNoPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsCustomer ACustomer = new clsCustomer();
-                //create some test data to assign to the property
-                string TestData = "21b";
-                //assign the data to the property
-                ACustomer.HouseNo = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(ACustomer.HouseNo, TestData);
-            }
-
-            [TestMethod]
-            public void PostCodePropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsCustomer ACustomer = new clsCustomer();
-                //create some test data to assign to the property
-                string TestData = "LE1 4AB";
-                //assign the data to the property
-                ACustomer.PostCode = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(ACustomer.PostCode, TestData);
-            }
-
-            [TestMethod]
-            public void StreetPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsCustomer ACustomer = new clsCustomer();
-                //create some test data to assign to the property
-                string TestData = "Some Street";
-                //assign the data to the property
-                ACustomer.Street = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(ACustomer.Street, TestData);
-            }
-
-            [TestMethod]
-            public void TownPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsCustomer ACustomer = new clsCustomer();
-                //create some test data to assign to the property
-                string TestData = "Leicester";
-                //assign the data to the property
-                ACustomer.Town = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(ACustomer.Town, TestData);
-            }
-
+        [TestMethod]
+        public void TestCustomerNoFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to find the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the methods
+            Int32 CustomerID = 3;
+            //invoke the method
+            Found = ACustomer.Find(CustomerID);
+            if (ACustomer.CustomerID != 3)
+                {
+                OK = false;
+                }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
 
         }
+
+        [TestMethod]
+        public void TestDateOfBirthFound()
+        {
+            //create an instance of the class we want to create
+            clsCustomer ACustomer = new clsCustomer();
+            //boolean variable to find the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the methods
+            Int32 CustomerID = 3;
+            //invoke the method
+            Found = ACustomer.Find(CustomerID);
+            if (ACustomer.DateOfBirth != Convert.ToDateTime("16/09/2015"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+
+        }
+
     }
+}

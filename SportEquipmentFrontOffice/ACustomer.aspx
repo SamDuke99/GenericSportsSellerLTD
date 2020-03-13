@@ -10,21 +10,32 @@
     <form id="form1" runat="server">
         <div>
         </div>
-        House no&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Customer ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
         <br />
-        Street&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
         <br />
-        Town&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblUsername" runat="server" Text="Username"></asp:Label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="txtUsername" runat="server"></asp:TextBox>
         <br />
-        Post Code&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
         <br />
-        Country&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="lblPassword" runat="server" Text="Password"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
         <br />
-        Date Added&nbsp;&nbsp;
-        <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblEmail" runat="server" Text="Email Address"></asp:Label>
+&nbsp;&nbsp; &nbsp;
+        <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
+        <br />
+        <br />
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="lblDOB" runat="server" Text="Data Of Birth"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="txtDOB" runat="server"></asp:TextBox>
+        <br />
+        &nbsp;&nbsp;
         <br />
         <br />
         <asp:CheckBox ID="CheckBox1" runat="server" Text="Active" />
