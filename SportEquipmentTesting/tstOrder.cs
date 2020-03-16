@@ -10,11 +10,11 @@ namespace SportEquipmentTesting
 
         //good test data
         String OrderDescription = "plenty of items";
-        String OrderDatePlaced = DateTime.Now.Date.ToString;
-        Boolean OrderCompleted = true;
-        float OrderPrice = 9;
-        Int32 OrderCustomerID = 98;
-        Int32 OrderStaffID = 99;
+        String OrderDatePlaced = DateTime.Now.Date.ToString();
+        String OrderCompleted = "true";
+        String OrderPrice = "9.9";
+        String OrderCustomerID = "1";
+        String OrderStaffID = "1";
 
 
         [TestMethod]

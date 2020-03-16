@@ -41,7 +41,7 @@
          
         <asp:Label ID="lblOrderCompleted" runat="server" style="z-index: 1; left: 23px; top: 241px; position: absolute" Text="Order Completed"></asp:Label>
          
-        <asp:Button ID="btnOrderNumberFind" runat="server" style="z-index: 1; left: 327px; top: 115px; position: absolute" Text="Find" OnClick="btnOrderNumberFind_Click" />
+        <asp:Button ID="btnOrderNumberFind" runat="server" style="z-index: 1; left: 389px; top: 114px; position: absolute" Text="Find" OnClick="btnOrderNumberFind_Click" />
          
     </form>
   

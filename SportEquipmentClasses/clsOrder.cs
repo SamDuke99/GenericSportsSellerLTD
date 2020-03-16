@@ -97,18 +97,8 @@ namespace SportEquipmentClasses
 
         public bool Find(int OrderNumber)
         {
-            OrderNumber = 21;
-            OrderDescription = "testOD 123";
-            OrderDatePlaced = Convert.ToDateTime("16/9/2020");
-            OrderCompleted = true;
-            OrderPrice = 9;
-            CustomerID = 34;
-            StaffID = 55;
-            return true;
-
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@OrderNumber", OrderNumber);
-            
             DB.Execute("sproc_tblOrder_FilterByOrderNumber");
             if (DB.Count == 1)
             {
@@ -117,15 +107,24 @@ namespace SportEquipmentClasses
                 mOrderDatePlaced = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDatePlaced"]);
                 mOrderCompleted = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderCompleted"]);
                 mOrderPrice = Convert.ToInt32(DB.DataTable.Rows[0]["OrderPrice"]);
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderCustomerID"]);
-                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderStaffID"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
                 return true;
             }
             else
             {
                 return false;
             }
+        }
 
+        public string Valid(string orderDescription, 
+            string orderDatePlaced,
+            string orderCompleted,
+            string orderPrice,
+            string orderCustomerID,
+            string orderStaffID)
+        {
+            return "";
         }
     }
 }

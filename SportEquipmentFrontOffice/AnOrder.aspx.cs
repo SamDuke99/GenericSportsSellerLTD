@@ -38,4 +38,22 @@ public partial class AnOrder : System.Web.UI.Page
     {
 
     }
+
+    protected void btnOrderNumberFind_Click(object sender, EventArgs e)
+    {
+        clsOrder AOrder = new clsOrder();
+        Int32 OrderNumber;
+        Boolean Found = false;
+        OrderNumber = Convert.ToInt32(txtOrderNumber.Text);
+        Found = AOrder.Find(OrderNumber);
+        if (Found == true)
+        {
+            AOrder.OrderDescription = txtOrderDescription.Text;
+            AOrder.OrderDatePlaced = Convert.ToDateTime(txtOrderDatePlaced.Text);
+            AOrder.OrderCompleted = Convert.ToBoolean(checkOrderCompleted.Checked);
+            AOrder.OrderPrice = Convert.ToSingle(txtOrderPrice.Text);
+            AOrder.StaffID = Convert.ToInt32(txtOrderStaffID);
+            AOrder.CustomerID = Convert.ToInt32(txtOrderCustomerID);
+        }
+    }
 }
