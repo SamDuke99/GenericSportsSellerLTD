@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SportEquipmentClasses;
 
+
 namespace SportEquipmentTesting
 {
     [TestClass]
@@ -121,7 +122,7 @@ namespace SportEquipmentTesting
             bool ok = true;
             int staffId = 1;
             found = staffMember.Find(staffId);
-            if (staffMember.Password != "chicken")
+            if (staffMember.Password != "chicken1")
             {
                 ok = false;
             }
@@ -169,7 +170,7 @@ namespace SportEquipmentTesting
             bool ok = true;
             int staffId = 1;
             found = staffMember.Find(staffId);
-            if (staffMember.Department != "asdf")
+            if (staffMember.Department != "martial")
             {
                 ok = false;
             }
@@ -323,7 +324,7 @@ namespace SportEquipmentTesting
         public void StaffIdOther1()
         {
             clsStaff staffMember = new clsStaff();
-            string testValue = "1;DROP DATABASE xyz;";
+            string testValue = "1; DROP DATABASE xyz";
             string errorMsg = staffMember.ValidId(testValue);
             Assert.AreNotEqual(errorMsg, "");
         }
@@ -521,12 +522,145 @@ namespace SportEquipmentTesting
         public void StaffPasswordOther1()
         {
             clsStaff staffMember = new clsStaff();
-            string testValue = "password=chicken OR 1=1;";
+            string testValue = "chicken' OR 1=1 -- ";
             string errorMsg = staffMember.ValidPassword(testValue);
             Assert.AreNotEqual(errorMsg, "");
         }
 
+        [TestMethod]
+        public void StaffPositionTest0()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "seller";
+            string errorMsg = staffMember.ValidPosition(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
 
+        [TestMethod]
+        public void StaffPositionTest1()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "drone";
+            string errorMsg = staffMember.ValidPosition(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffPositionTest2()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "<img src=”asdf.png” onerror=”alert(1);”>";
+            string errorMsg = staffMember.ValidPosition(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffDepartmentTest0()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "martial";
+            string errorMsg = staffMember.ValidDepartment(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffDepartmentTest1()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "earnest";
+            string errorMsg = staffMember.ValidDepartment(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void StaffDepartmentTest2()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "'; DROP USER xyz";
+            string errorMsg = staffMember.ValidDepartment(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void HireDateExtremeMin()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "01/01/0000";
+            string errorMsg = staffMember.ValidHireDate(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void HireDateMin()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "01/01/0001";
+            string errorMsg = staffMember.ValidHireDate(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void HireDateMinOneMore()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "12/12/2012";
+            string errorMsg = staffMember.ValidHireDate(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void HireDateMaxOneLess()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "31/12/9998";
+            string errorMsg = staffMember.ValidHireDate(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void HireDateMax()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "31/12/9999";
+            string errorMsg = staffMember.ValidHireDate(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void HireDateMid()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "15/06/5000";
+            string errorMsg = staffMember.ValidHireDate(testValue);
+            Assert.AreEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void HireDateInvalidType()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "string";
+            string errorMsg = staffMember.ValidHireDate(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void HireDateOther0()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "32/12/2012";
+            string errorMsg = staffMember.ValidHireDate(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
+
+        [TestMethod]
+        public void HireDateOther1()
+        {
+            clsStaff staffMember = new clsStaff();
+            string testValue = "31/13/2012";
+            string errorMsg = staffMember.ValidHireDate(testValue);
+            Assert.AreNotEqual(errorMsg, "");
+        }
     }
         
 }

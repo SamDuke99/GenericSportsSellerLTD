@@ -23,13 +23,13 @@ namespace SportEquipmentClasses
 
         public clsStaff() {}
         public clsStaff(int id, string fullname, string position, string department, string password, DateTime hireDate, bool isActive) {
-            Id = id;
-            Fullname = fullname;
-            Position = position;
-            Department = department;
-            Password = password;
-            HireDate = hireDate;
-            IsActive = isActive;
+            this.id = id;
+            this.fullname = fullname;
+            this.position = position;
+            this.department = department;
+            this.password = password;
+            this.hireDate = hireDate;
+            this.isActive = isActive;
         }
 
         ~clsStaff() {}
@@ -48,7 +48,6 @@ namespace SportEquipmentClasses
                 position = Convert.ToString(db.DataTable.Rows[0]["position"]);
                 department = Convert.ToString(db.DataTable.Rows[0]["department"]);
                 isActive = Convert.ToBoolean(db.DataTable.Rows[0]["is_active"]);
-
                 return true;
             }
             else
@@ -79,6 +78,7 @@ namespace SportEquipmentClasses
             }
 
             return errorMsg;
+            
         }
 
         // Full name must be non-empty string
@@ -123,7 +123,7 @@ namespace SportEquipmentClasses
                     
                     if (!Char.IsLetter(c))
                     {
-                        if ("#@?!%$&*".IndexOf(c) == -1)
+                        if ("#@?!%$&*".IndexOf(c) == -1 && Char.IsDigit(c) == false)
                             errorMsg = "a-z A-Z 0-9 # @ ? ! % $ & * characters are allowd!";
                     }
                 }
@@ -140,7 +140,7 @@ namespace SportEquipmentClasses
             try
             {
                 DateTime dateTemp = Convert.ToDateTime(staffHireDate);
-            } catch (FormatException)
+            } catch
             {
                 errorMsg = "Date should be in DD/MM/YYYY format!";
             }
@@ -158,7 +158,7 @@ namespace SportEquipmentClasses
 
         public string ValidDepartment(string staffDepartment)
         {
-            if (staffDepartment != "footbll" && staffDepartment != "fitness" && staffDepartment != "martial")
+            if (staffDepartment != "football" && staffDepartment != "fitness" && staffDepartment != "martial")
                 return "Allowed departments: football, fitness, martial!";
             else
                 return "";

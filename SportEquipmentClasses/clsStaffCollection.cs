@@ -8,76 +8,69 @@ namespace SportEquipmentClasses
 {
     public class clsStaffCollection
     {
-        private List<clsStaff> staffList = new List<clsStaff>();
+        List<clsStaff> staffList = new List<clsStaff>();
+        clsStaff thisStaffMember = new clsStaff();
+        public List<clsStaff> StaffList { get { return staffList; } set { staffList = value; } }
+        public clsStaff ThisStaffMember { get { return thisStaffMember; } set { thisStaffMember = value; } }
 
-        public List<clsStaff> StaffList { get { return staffList; } }
+        public int Count { get { return staffList.Count; } set { } }
 
-        public clsStaffCollection() { }
-        public clsStaffCollection(List<clsStaff> staffList)
+        public clsStaffCollection()
         {
-            this.staffList = staffList;
-        }
+            Int32 index = 0;
+            Int32 recordCount = 0;
+            clsDataConnection db = new clsDataConnection();
+            db.Execute("sproc_tblStaff_Select_All");
+            recordCount = db.Count;
 
-        public void Add(clsStaff staffMember)
-        {
-            staffList.Add(staffMember);
-        }
-
-        // Searches for a staff member with specified ID.
-        // Returns reference to found object if succeed.
-        // Returns null otherwise.
-        public clsStaff Find(int staffId)
-        {
-            foreach (clsStaff var in staffList)
+            while (index < recordCount)
             {
-                if (var.Id == staffId)
-                    return var;
+                clsStaff staffMember = new clsStaff();
+                staffMember.Id = Convert.ToInt32(db.DataTable.Rows[index]["staff_id"]);
+                staffMember.HireDate = Convert.ToDateTime(db.DataTable.Rows[index]["hire_date"]);
+                staffMember.Position = Convert.ToString(db.DataTable.Rows[index]["position"]);
+                staffMember.Department = Convert.ToString(db.DataTable.Rows[index]["department"]);
+                staffMember.Fullname = Convert.ToString(db.DataTable.Rows[index]["full_name"]);
+                staffMember.Password = Convert.ToString(db.DataTable.Rows[index]["password"]);
+                staffMember.IsActive = Convert.ToBoolean(db.DataTable.Rows[index]["is_active"]);
+                index++;
+                staffList.Add(staffMember);
             }
 
-            return null;
+  
         }
 
-        // Deletes a staff member with specified ID.
-        public void Delete(int staffId)
+        public int Add()
         {
-            for (int i = 0; i < staffList.Count; i++)
-            {
-                if (staffList[i].Id == staffId)
-                {
-                    StaffList.RemoveAt(i);
-                    break;
-                }
-            }
+            clsDataConnection db = new clsDataConnection();
+            db.AddParameter("@password", thisStaffMember.Password);
+            db.AddParameter("@fullname", thisStaffMember.Fullname);
+            db.AddParameter("@hiredate", thisStaffMember.HireDate);
+            db.AddParameter("@position", thisStaffMember.Position);
+            db.AddParameter("@department", thisStaffMember.Department);
+            db.AddParameter("@active", thisStaffMember.IsActive);
+            return db.Execute("sproc_tblStaff_Insert");
         }
 
-        // Filters staff members using filter passed by filterMethod.
-        // Returns filtered clsStaffCollection instance.
-        public clsStaffCollection Filter(Func<clsStaff, bool> filterMethod)
+        public void Delete()
         {
-            clsStaffCollection filteredStaff = new clsStaffCollection();
-
-            foreach (clsStaff var in staffList)
-            {
-                if (filterMethod(var))
-                    filteredStaff.Add(var);
-            }
-
-            return filteredStaff;
+            clsDataConnection db = new clsDataConnection();
+            db.AddParameter("@id", thisStaffMember.Id);
+            db.Execute("sproc_tblStaff_Delete");
         }
 
-        public static bool filterAdmin(clsStaff staffMember)
+        public void Update()
         {
-            return staffMember.Position == "admin";
+            clsDataConnection db = new clsDataConnection();
+            db.AddParameter("@id", thisStaffMember.Id);
+            db.AddParameter("@password", thisStaffMember.Password);
+            db.AddParameter("@fullname", thisStaffMember.Fullname);
+            db.AddParameter("@hiredate", thisStaffMember.HireDate);
+            db.AddParameter("@position", thisStaffMember.Position);
+            db.AddParameter("@department", thisStaffMember.Department);
+            db.AddParameter("@active", thisStaffMember.IsActive);
+            db.Execute("sproc_tblStaff_Update");
         }
 
-        public static bool filterManager(clsStaff staffMember)
-        {
-            return staffMember.Position == "manager";
-        }
-
-        public static bool filterSeller(clsStaff staffMember)
-        {
-            return staffMember.Position == "seller";
-        }
     }
 }

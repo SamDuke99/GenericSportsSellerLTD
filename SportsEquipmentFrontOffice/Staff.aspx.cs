@@ -8,9 +8,31 @@ using SportEquipmentClasses;
 
 public partial class AddStaff : System.Web.UI.Page
 {
+
+    Int32 staffId;
     protected void Page_Load(object sender, EventArgs e)
     {
-            
+        staffId = Convert.ToInt32(Session["StaffId"]);
+        if (IsPostBack == false)
+        {
+            if (staffId != -1)
+            {
+                DisplayStaff();
+            }
+        }
+    }
+
+    void DisplayStaff()
+    {
+        clsStaffCollection staffList = new clsStaffCollection();
+        staffList.ThisStaffMember.Find(staffId);
+        txtStaffId.Text = staffList.ThisStaffMember.Id.ToString();
+        txtFullname.Text = staffList.ThisStaffMember.Fullname.ToString();
+        txtPassword.Text = staffList.ThisStaffMember.Password.ToString();
+        txtPosition.Text = staffList.ThisStaffMember.Position.ToString();
+        txtDepartment.Text = staffList.ThisStaffMember.Department.ToString();
+        txtHireDate.Text = staffList.ThisStaffMember.HireDate.ToString();
+        chkActive.Checked = staffList.ThisStaffMember.IsActive;
     }
 
     private void Reset_All()
@@ -76,6 +98,21 @@ public partial class AddStaff : System.Web.UI.Page
         staffMember.Department = department;
         staffMember.Fullname = fullname;
         staffMember.IsActive = chkActive.Checked;
+        clsStaffCollection staffList = new clsStaffCollection();
+
+        if (staffId == -1)
+        {
+            staffList.ThisStaffMember = staffMember;
+            staffList.Add();
+        }
+        else
+        {
+            staffList.ThisStaffMember.Find(staffId);
+            staffList.ThisStaffMember = staffMember;
+            staffList.Update();
+        }
+
+        Response.Redirect("StaffList.aspx");
 
     }
 
