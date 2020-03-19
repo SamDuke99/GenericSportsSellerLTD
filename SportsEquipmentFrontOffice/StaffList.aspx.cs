@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SportEquipmentClasses;
 
 public partial class StaffList : System.Web.UI.Page
 {
@@ -59,5 +60,25 @@ public partial class StaffList : System.Web.UI.Page
         {
             lblError.Text = "Please Select a record to edit from the list";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection staffList = new clsStaffCollection();
+        staffList.ReportByPosition(txtPosFilter.Text);
+        lstStaff.DataSource = staffList.StaffList;
+        lstStaff.DataValueField = "Id";
+        lstStaff.DataTextField = "Fullname";
+        lstStaff.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection staffList = new clsStaffCollection();
+        txtPosFilter.Text = "";
+        lstStaff.DataSource = staffList.StaffList;
+        lstStaff.DataValueField = "Id";
+        lstStaff.DataTextField = "Fullname";
+        lstStaff.DataBind();
     }
 }

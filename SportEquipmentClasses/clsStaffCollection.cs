@@ -17,27 +17,9 @@ namespace SportEquipmentClasses
 
         public clsStaffCollection()
         {
-            Int32 index = 0;
-            Int32 recordCount = 0;
             clsDataConnection db = new clsDataConnection();
             db.Execute("sproc_tblStaff_Select_All");
-            recordCount = db.Count;
-
-            while (index < recordCount)
-            {
-                clsStaff staffMember = new clsStaff();
-                staffMember.Id = Convert.ToInt32(db.DataTable.Rows[index]["staff_id"]);
-                staffMember.HireDate = Convert.ToDateTime(db.DataTable.Rows[index]["hire_date"]);
-                staffMember.Position = Convert.ToString(db.DataTable.Rows[index]["position"]);
-                staffMember.Department = Convert.ToString(db.DataTable.Rows[index]["department"]);
-                staffMember.Fullname = Convert.ToString(db.DataTable.Rows[index]["full_name"]);
-                staffMember.Password = Convert.ToString(db.DataTable.Rows[index]["password"]);
-                staffMember.IsActive = Convert.ToBoolean(db.DataTable.Rows[index]["is_active"]);
-                index++;
-                staffList.Add(staffMember);
-            }
-
-  
+            populateCollection(db);
         }
 
         public int Add()
@@ -70,6 +52,36 @@ namespace SportEquipmentClasses
             db.AddParameter("@department", thisStaffMember.Department);
             db.AddParameter("@active", thisStaffMember.IsActive);
             db.Execute("sproc_tblStaff_Update");
+        }
+
+        public void ReportByPosition(string pos)
+        {
+            clsDataConnection db = new clsDataConnection();
+            db.AddParameter("@position", pos);
+            db.Execute("sproc_tblStaff_FilterByPosition");
+            populateCollection(db);
+        }
+
+        void populateCollection(clsDataConnection db)
+        {
+            Int32 index = 0;
+            Int32 recordCount = 0;
+            recordCount = db.Count;
+            staffList = new List<clsStaff>();
+
+            while (index < recordCount)
+            {
+                clsStaff staffMember = new clsStaff();
+                staffMember.Id = Convert.ToInt32(db.DataTable.Rows[index]["staff_id"]);
+                staffMember.HireDate = Convert.ToDateTime(db.DataTable.Rows[index]["hire_date"]);
+                staffMember.Position = Convert.ToString(db.DataTable.Rows[index]["position"]);
+                staffMember.Department = Convert.ToString(db.DataTable.Rows[index]["department"]);
+                staffMember.Fullname = Convert.ToString(db.DataTable.Rows[index]["full_name"]);
+                staffMember.Password = Convert.ToString(db.DataTable.Rows[index]["password"]);
+                staffMember.IsActive = Convert.ToBoolean(db.DataTable.Rows[index]["is_active"]);
+                index++;
+                staffList.Add(staffMember);
+            }
         }
 
     }
