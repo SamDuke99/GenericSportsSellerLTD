@@ -117,14 +117,37 @@ namespace SportEquipmentClasses
             }
         }
 
-        public string Valid(string orderDescription, 
-            string orderDatePlaced,
-            string orderCompleted,
-            string orderPrice,
-            string orderCustomerID,
-            string orderStaffID)
+        public string Valid(string orderDescription, string orderDatePlaced, 
+            string orderCompleted, string orderPrice, string customerID, 
+            string staffID)
         {
-            return "";
+            string Error = "";
+            DateTime DateTemp;
+            if(orderDescription.Length == 0)
+            {
+                Error = Error + "The Order Description may not be blank:  ";
+            }
+            if(orderDescription.Length > 50)
+            {
+                Error = Error + "The Order Description must be less than 50 characters:  ";
+            }
+            try
+            {
+                DateTemp = Convert.ToDateTime(orderDatePlaced);
+                if(DateTemp < DateTime.Now.Date)
+{
+                    Error = Error + "The Order Date cannot be in the past :  ";
+                }
+                if(DateTemp > DateTime.Now.Date)
+{
+                    Error = Error + "The Order Date cannot be in the future :  ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The Order Date was not a valid date :  ";
+            }
+            return Error;
         }
     }
 }

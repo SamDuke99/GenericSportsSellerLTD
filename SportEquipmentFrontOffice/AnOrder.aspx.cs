@@ -16,22 +16,31 @@ public partial class AnOrder : System.Web.UI.Page
     protected void btnOrderSubmit_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
-        //OrderNumber
-        AnOrder.OrderNumber = Convert.ToInt32(txtOrderNumber.Text);
-        //OrderDescription
-        AnOrder.OrderDescription = txtOrderDescription.Text;
-        //OrderDatePlaced
-        AnOrder.OrderDatePlaced = Convert.ToDateTime(txtOrderDatePlaced.Text);
-        //OrderCompleted
-        AnOrder.OrderCompleted = Convert.ToBoolean(checkOrderCompleted);
-        //OrderPrice
-        AnOrder.OrderPrice = Convert.ToInt32(txtOrderPrice.Text);
-        //OrderCustomerID
-        AnOrder.CustomerID = Convert.ToInt32(txtOrderCustomerID.Text);
-        //OrderStaffID
-        AnOrder.StaffID = Convert.ToInt32(txtOrderStaffID.Text);
-        Session["AnOrder"] = AnOrder;
-        Response.Redirect("OrderViewer.aspx");
+        string OrderDescription = txtOrderDescription.Text;
+        string OrderDatePlaced = txtOrderDatePlaced.Text;
+        string OrderCompleted = txtOrderCompleted.Text;
+        string OrderPrice = txtOrderPrice.Text;
+        string CustomerID = txtOrderCustomerID.Text;
+        string StaffID = txtOrderStaffID.Text;
+        string Error = "";
+        Error = AnOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted,
+            OrderPrice, CustomerID, StaffID);
+        if (Error == "")
+        {
+            AnOrder.OrderDescription = OrderDescription;
+            AnOrder.OrderDatePlaced = Convert.ToDateTime(OrderDatePlaced);
+            AnOrder.OrderCompleted = Convert.ToBoolean(OrderCompleted);
+            AnOrder.OrderPrice = (float)Convert.ToDouble(OrderPrice);
+            AnOrder.CustomerID = Convert.ToInt32(CustomerID);
+            AnOrder.StaffID = Convert.ToInt32(StaffID);
+
+            Session["AnOrder"] = AnOrder;
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void btnOrderCancel_Click(object sender, EventArgs e)
@@ -50,7 +59,7 @@ public partial class AnOrder : System.Web.UI.Page
         {
             AOrder.OrderDescription = txtOrderDescription.Text;
             AOrder.OrderDatePlaced = Convert.ToDateTime(txtOrderDatePlaced.Text);
-            AOrder.OrderCompleted = Convert.ToBoolean(checkOrderCompleted.Checked);
+            AOrder.OrderCompleted = Convert.ToBoolean(txtOrderCompleted.Text);
             AOrder.OrderPrice = Convert.ToSingle(txtOrderPrice.Text);
             AOrder.StaffID = Convert.ToInt32(txtOrderStaffID);
             AOrder.CustomerID = Convert.ToInt32(txtOrderCustomerID);

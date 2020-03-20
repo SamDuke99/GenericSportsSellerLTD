@@ -37,11 +37,12 @@
        <asp:Button ID="btnOrderCancel" runat="server" style="z-index: 1; left: 110px; top: 425px; position: absolute" Text="Cancel" OnClick="btnOrderCancel_Click" />
        <asp:Button ID="btnOrderSubmit" runat="server" style="z-index: 1; left: 19px; top: 424px; position: absolute" Text="Submit" OnClick="btnOrderSubmit_Click" />
          
-        <asp:CheckBox ID="checkOrderCompleted" runat="server" style="z-index: 1; left: 179px; top: 237px; position: absolute; right: 435px;" />
-         
         <asp:Label ID="lblOrderCompleted" runat="server" style="z-index: 1; left: 23px; top: 241px; position: absolute" Text="Order Completed"></asp:Label>
          
         <asp:Button ID="btnOrderNumberFind" runat="server" style="z-index: 1; left: 389px; top: 114px; position: absolute" Text="Find" OnClick="btnOrderNumberFind_Click" />
+         
+        <asp:TextBox ID="txtOrderCompleted" runat="server" style="z-index: 1; left: 179px; top: 238px; position: absolute"></asp:TextBox>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 281px; top: 424px; position: absolute"></asp:Label>
          
     </form>
   
