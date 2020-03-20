@@ -8,11 +8,36 @@ using SportEquipmentClasses;
 
 public partial class AnOrder : System.Web.UI.Page
 {
+
+    Int32 OrderNumber;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        OrderNumber = Convert.ToInt32(Session["OrderNumber"]);
+        if (IsPostBack == false)
+        {
+            if (OrderNumber != -1)
+            {
+                DisplayOrder();
+            }
+        }
     }
-    
+
+    void DisplayOrder()
+    {
+        clsOrderCollection OrderBook = new clsOrderCollection();
+        OrderBook.ThisOrder.Find(OrderNumber);
+
+        txtOrderNumber.Text = OrderBook.ThisOrder.OrderNumber.ToString();
+        txtOrderDescription.Text = OrderBook.ThisOrder.OrderDescription;
+        txtOrderDatePlaced.Text = OrderBook.ThisOrder.OrderNumber.ToString();
+        txtOrderCompleted.Text = OrderBook.ThisOrder.OrderNumber.ToString();
+        txtOrderPrice.Text = OrderBook.ThisOrder.OrderNumber.ToString();
+        txtOrderCustomerID.Text = OrderBook.ThisOrder.OrderNumber.ToString();
+        txtOrderStaffID.Text = OrderBook.ThisOrder.OrderNumber.ToString();
+
+    }
+
     protected void btnOrderSubmit_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
@@ -27,6 +52,8 @@ public partial class AnOrder : System.Web.UI.Page
             OrderPrice, CustomerID, StaffID);
         if (Error == "")
         {
+
+            AnOrder.OrderNumber = OrderNumber;
             AnOrder.OrderDescription = OrderDescription;
             AnOrder.OrderDatePlaced = Convert.ToDateTime(OrderDatePlaced);
             AnOrder.OrderCompleted = Convert.ToBoolean(OrderCompleted);
@@ -34,8 +61,19 @@ public partial class AnOrder : System.Web.UI.Page
             AnOrder.CustomerID = Convert.ToInt32(CustomerID);
             AnOrder.StaffID = Convert.ToInt32(StaffID);
 
-            Session["AnOrder"] = AnOrder;
-            Response.Redirect("OrderViewer.aspx");
+            clsOrderCollection OrderList = new clsOrderCollection();
+
+            if (OrderNumber == -1)
+            {
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Add();
+            }
+            else
+            {
+                OrderList.ThisOrder.Find(OrderNumber);
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Update();
+            }
         }
         else
         {
