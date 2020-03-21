@@ -1,49 +1,81 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SportEquipmentClasses;
 
 namespace SportEquipmentTesting
 {
     [TestClass]
     public class tstOrderLine
     {
+        //good test data
+        string OrderNumber = "1";
+        string ProductID = "1";
+
+        //InstanceOK
         [TestMethod]
         public void InstanceOK()
         {
-            //create an instance of the class we want to create
             clsOrderLine AnOrderLine = new clsOrderLine();
-            //test to see that it exists
             Assert.IsNotNull(AnOrderLine);
         }
 
-        //OrderLineNumber
+        //OrderLinNumberPropertyOK
         [TestMethod]
-        public void OrderLineNumberOK()
+        public void OrderLinNumberPropertyOK()
         {
-            clsOrderLine AnOrderLine = new clsOrderLine();
-            Int32 TestData = 1;
-            AnOrderLine.OrderLineNumber = TestData;
-            Assert.AreEqual(AnOrderLine.OrderLineNumber, TestData);
+
         }
 
-        //OrderNumber
+        //OrderNumberPropertyOK
         [TestMethod]
-        public void OrderNumberOK()
+        public void OrderNumberPropertyOK()
         {
-            clsOrderLine AnOrderLine = new clsOrderLine();
-            Int32 TestData = 2;
-            AnOrderLine.OrderNumber = TestData;
-            Assert.AreEqual(AnOrderLine.OrdereNumber, TestData);
+
         }
 
-        //ProductID
+        //ProductIDPropertyOK
         [TestMethod]
-        public void OrderProductIDOK()
+        public void ProductIDPropertyOK()
         {
-            clsOrderLine AnOrderLine = new clsOrderLine();
-            Int32 TestData = 3;
-            AnOrderLine.ProductID = TestData;
-            Assert.AreEqual(AnOrderLine.ProductID, TestData);
+
         }
+
+        //FindMethod
+        [TestMethod]
+        public void FindMethod()
+        {
+
+        }
+
+        //OrderLineNumberFound
+        [TestMethod]
+        public void OrderLineNumberFound()
+        {
+
+        }
+
+        //OrderNumberFound
+        [TestMethod]
+        public void OrderNumberFound()
+        {
+
+        }
+
+        //ProductIDFound
+        [TestMethod]
+        public void ProductIDFound()
+        {
+
+        }
+
+        //ValidMethodOK
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+
+        }
+
+        //Min - Max tests
 
     }
 }

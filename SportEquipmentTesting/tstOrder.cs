@@ -9,12 +9,12 @@ namespace SportEquipmentTesting
     {
 
         //good test data
-        String OrderDescription = "plenty of items";
-        String OrderDatePlaced = DateTime.Now.Date.ToString();
-        String OrderCompleted = "true";
-        String OrderPrice = "9.9";
-        String OrderCustomerID = "1";
-        String OrderStaffID = "1";
+        string OrderDescription = "plenty of items";
+        string OrderDatePlaced = DateTime.Now.Date.ToString();
+        string OrderCompleted = "true";
+        string OrderPrice = "9.9";
+        string OrderCustomerID = "1";
+        string OrderStaffID = "1";
 
 
         [TestMethod]
@@ -107,6 +107,7 @@ namespace SportEquipmentTesting
             Assert.IsTrue(Found);
         }
 
+        //OrderNumberFound
         [TestMethod]
         public void TestOrderNumberFound()
         {
@@ -218,6 +219,7 @@ namespace SportEquipmentTesting
             Assert.IsTrue(OK);
         }
 
+        //ValidMethodOK
         [TestMethod]
         public void ValidMethodOK()
         {
