@@ -18,7 +18,7 @@ public partial class OrderList : System.Web.UI.Page
 
     void DisplayOrders()
     {
-        SportEquipmentClasses.clsOrderCollection Orders = new SportEquipmentClasses.clsOrderCollection();
+        clsOrderCollection Orders = new clsOrderCollection();
         lstOrderList.DataSource = Orders.OrderList;
         lstOrderList.DataValueField = "OrderNumber";
         lstOrderList.DataTextField = "OrderDescription";

@@ -8,7 +8,6 @@ using System.Web.UI.WebControls;
 
 public partial class DeleteOrder : System.Web.UI.Page
 {
-
     Int32 OrderNumber;
 
     protected void Page_Load(object sender, EventArgs e)
