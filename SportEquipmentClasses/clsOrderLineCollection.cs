@@ -61,6 +61,7 @@ namespace SportEquipmentClasses
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@OrderNumber", mThisOrderLine.OrderNumber);
             DB.AddParameter("@ProductID", mThisOrderLine.ProductID);
+            DB.AddParameter("@ProductQuantity", mThisOrderLine.ProductQuantity);
 
             return DB.Execute("sproc_tblOrderLine_Insert");
         }
@@ -78,6 +79,7 @@ namespace SportEquipmentClasses
             DB.AddParameter("@OrderLineNumber", mThisOrderLine.OrderLineNumber);
             DB.AddParameter("@OrderNumber", mThisOrderLine.OrderNumber);
             DB.AddParameter("@ProductID", mThisOrderLine.ProductID);
+            DB.AddParameter("@ProductQuantity", mThisOrderLine.ProductQuantity);
             DB.Execute("sproc_tblOrder_Update");
         }
 
@@ -104,6 +106,7 @@ namespace SportEquipmentClasses
                 AnOrderLine.OrderLineNumber = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderLineNumber"]);
                 AnOrderLine.OrderNumber = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderNumber"]);
                 AnOrderLine.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
+                AnOrderLine.ProductQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductQuantity"]);
                 mOrderLineList.Add(AnOrderLine);
                 Index++;
             }

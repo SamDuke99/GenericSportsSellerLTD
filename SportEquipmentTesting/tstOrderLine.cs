@@ -10,6 +10,7 @@ namespace SportEquipmentTesting
         //good test data
         string OrderNumber = "1";
         string ProductID = "1";
+        string ProductQuantity = "1";
 
         //InstanceOK
         [TestMethod]
@@ -52,6 +53,17 @@ namespace SportEquipmentTesting
 
         }
 
+        //ProductQuantityPropertyOK
+        [TestMethod]
+        public void ProductQuantityPropertyOK()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Int32 TestData = 1;
+            AnOrderLine.ProductQuantity = TestData;
+            Assert.AreEqual(AnOrderLine.ProductQuantity, TestData);
+
+        }
+
         //FindMethod
         [TestMethod]
         public void FindMethod()
@@ -89,7 +101,7 @@ namespace SportEquipmentTesting
             Boolean OK = true;
             Int32 OrderNumber = 21;
             Found = AnOrderLine.Find(OrderNumber);
-            if (AnOrderLine.OrderNumber != "1")
+            if (AnOrderLine.OrderNumber != 1)
             {
                 OK = false;
             }
@@ -105,7 +117,24 @@ namespace SportEquipmentTesting
             Boolean OK = true;
             Int32 ProductID = 1;
             Found = AnOrderLine.Find(ProductID);
-            if (AnOrderLine.ProductID != "1")
+            if (AnOrderLine.ProductID != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        //ProductQuantityFound
+        [TestMethod]
+        public void ProductQuantityFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductQuantity = 1;
+            Found = AnOrderLine.Find(ProductQuantity);
+            if (AnOrderLine.ProductQuantity != 1)
             {
                 OK = false;
             }
@@ -119,7 +148,7 @@ namespace SportEquipmentTesting
         {
             clsOrderLine AnOrderLine = new clsOrderLine();
             String Error = "";
-            Error = AnOrderLine.Valid(OrderNumber, ProductID);
+            Error = AnOrderLine.Valid(OrderNumber, ProductID, ProductQuantity);
             Assert.AreEqual(Error, "");
 
         }

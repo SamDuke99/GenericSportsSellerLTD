@@ -50,6 +50,19 @@ namespace SportEquipmentClasses
             }
         }
 
+        private int mProductQuantity;
+        public int ProductQuantity
+        {
+            get
+            {
+                return mProductQuantity;
+            }
+            set
+            {
+                mProductQuantity = value;
+            }
+        }
+
         public bool Find(int OrderLineNumber)
         {
             clsDataConnection DB = new clsDataConnection();
@@ -60,6 +73,7 @@ namespace SportEquipmentClasses
                 mOrderLineNumber = Convert.ToInt32(DB.DataTable.Rows[0]["OrderLineNumber"]);
                 mOrderNumber = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNumber"]);
                 mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                mProductQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["ProductQuantity"]);
                 return true;
             }
             else
@@ -68,7 +82,7 @@ namespace SportEquipmentClasses
             }
         }
 
-        public string Valid(string OrderNumber, string ProductID)
+        public string Valid(string OrderNumber, string ProductID, string ProductQuantity)
         {
             return "";
         }

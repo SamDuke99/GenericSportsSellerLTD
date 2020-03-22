@@ -366,7 +366,7 @@ namespace SportEquipmentTesting
             clsOrder AOrder = new clsOrder();
             String Error = "";
             DateTime TestDate;
-           TestDate = DateTime.Now.Date;
+            TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(1);
             String OrderDatePlaced = TestDate.ToString();
             Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
@@ -397,6 +397,7 @@ namespace SportEquipmentTesting
         }
 
         //OrderPrice Tests
+        
 
     }
 }

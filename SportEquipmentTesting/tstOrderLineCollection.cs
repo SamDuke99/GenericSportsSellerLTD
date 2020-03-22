@@ -26,6 +26,7 @@ namespace SportEquipmentTesting
             TestItem.OrderLineNumber = 1;
             TestItem.OrderNumber = 1;
             TestItem.ProductID = 1;
+            TestItem.ProductQuantity = 1;
             TestList.Add(TestItem);
             AllOrderLines.OrderLineList = TestList;
             Assert.AreEqual(AllOrderLines.OrderLineList, TestList);
@@ -40,6 +41,7 @@ namespace SportEquipmentTesting
             TestOrderLine.OrderLineNumber = 1;
             TestOrderLine.OrderNumber = 1;
             TestOrderLine.ProductID = 1;
+            TestOrderLine.ProductQuantity = 1;
             AllOrderLines.ThisOrderLine = TestOrderLine;
             Assert.AreEqual(AllOrderLines.ThisOrderLine, TestOrderLine);
         }
@@ -52,8 +54,8 @@ namespace SportEquipmentTesting
             List<clsOrderLine> TestList = new List<clsOrderLine>();
             clsOrderLine TestItem = new clsOrderLine();
             TestItem.OrderNumber = 1;
-            TestItem.OrderDescription = 1;
-            TestItem.OrderDatePlaced = 1;
+            TestItem.ProductID = 1;
+            TestItem.ProductQuantity = 1;
             TestList.Add(TestItem);
             AllOrderLines.OrderLineList = TestList;
             Assert.AreEqual(AllOrderLines.Count, TestList.Count);
