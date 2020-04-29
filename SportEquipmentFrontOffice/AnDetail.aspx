@@ -82,6 +82,10 @@
             left: 90px; 
             top: 250px; 
             position: absolute" Text="Submit" OnClick="btnUpdateSubmit_Click" />
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; 
+            left: 20px; 
+            top: 300px; 
+            position: absolute"></asp:Label>
     </form>
 </body>
 </html>
