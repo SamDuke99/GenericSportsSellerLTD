@@ -48,6 +48,8 @@
                   position: absolute; 
                   height: 20px" Text="Brand">
         </asp:Label>
+
+
         <asp:TextBox ID="txtProductID" runat="server" style="z-index: 1; 
              left: 160px; 
              top: 120px; 
@@ -74,6 +76,7 @@
              position: absolute">
         </asp:TextBox>
         
+
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; 
             left: 160px; 
             top: 250px; 
@@ -82,10 +85,12 @@
             left: 90px; 
             top: 250px; 
             position: absolute" Text="Submit" OnClick="btnUpdateSubmit_Click" />
+        
         <asp:Label ID="lblError" runat="server" style="z-index: 1; 
             left: 20px; 
             top: 300px; 
-            position: absolute"></asp:Label>
+            position: absolute">
+        </asp:Label>
     </form>
 </body>
 </html>
