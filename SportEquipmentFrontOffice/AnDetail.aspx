@@ -76,16 +76,15 @@
              position: absolute">
         </asp:TextBox>
         
+        <asp:Button ID="BtnCancel" runat="server" style="z-index: 1; 
+             left: 160px; 
+             top: 250px; 
+             position: absolute" Text="Cancel" OnClick="BtnCancel_Click" />
+        <asp:Button ID="BtnSubmit" runat="server" style="z-index: 1; 
+             left: 100px; 
+             top: 250px; 
+             position: absolute; height: 26px;" Text="Submit" OnClick="BtnSubmit_Click" />
 
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; 
-            left: 160px; 
-            top: 250px; 
-            position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
-       <asp:Button ID="btnUpdateSubmit" runat="server" style="z-index: 1; 
-            left: 90px; 
-            top: 250px; 
-            position: absolute" Text="Submit" OnClick="btnUpdateSubmit_Click" />
-        
         <asp:Label ID="lblError" runat="server" style="z-index: 1; 
             left: 20px; 
             top: 300px; 
