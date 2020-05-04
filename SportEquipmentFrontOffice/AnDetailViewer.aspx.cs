@@ -10,8 +10,8 @@ public partial class AnDetailViewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsStock AnDetial = new clsStock();
+        clsStock AnDetail = new clsStock();
         AnDetail = (clsStock)Session["AnDetail"];
-        Response.Write(AnDetail.ProductID);
+        Response.Write(AnDetail.ProductId);
     }
 }
