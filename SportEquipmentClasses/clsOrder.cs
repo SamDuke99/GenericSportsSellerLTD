@@ -97,11 +97,16 @@ namespace SportEquipmentClasses
 
         public bool Find(int OrderNumber)
         {
+            //Create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
+            //Add the parameter for the Order # to search for
             DB.AddParameter("@OrderNumber", OrderNumber);
+            //Execute the stored procedure
             DB.Execute("sproc_tblOrder_FilterByOrderNumber");
+            //If 1 record is found (there should be either 1 or 0!)
             if (DB.Count == 1)
             {
+                //Copy the data from the database to the private data members
                 mOrderNumber = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNumber"]);
                 mOrderDescription = Convert.ToString(DB.DataTable.Rows[0]["OrderDescription"]);
                 mOrderDatePlaced = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDatePlaced"]);
@@ -109,16 +114,22 @@ namespace SportEquipmentClasses
                 mOrderPrice = Convert.ToInt32(DB.DataTable.Rows[0]["OrderPrice"]);
                 mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
                 mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                //Return that everything worked OK
                 return true;
             }
+            //If no record was found
             else
             {
+                //Return false indicating a problem
                 return false;
             }
         }
 
-        public string Valid(string orderDescription, string orderDatePlaced, 
-            string orderCompleted, string orderPrice, string customerID, 
+        public string Valid(string orderDescription, 
+            string orderDatePlaced, 
+            string orderCompleted, 
+            string orderPrice, 
+            string customerID, 
             string staffID)
         {
             string Error = "";

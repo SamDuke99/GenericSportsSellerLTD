@@ -65,26 +65,45 @@ namespace SportEquipmentClasses
 
         public bool Find(int OrderLineNumber)
         {
+            //Create an instance of the data connection
             clsDataConnection DB = new clsDataConnection();
+            //Add the parameter for the OrderLine # to search for
             DB.AddParameter("@OrderLineNumber", OrderLineNumber);
-            DB.Execute("sproc_tblOrder_FilterByOrderLineNumber");
+            //Execute the stored procedure
+            DB.Execute("sproc_tblOrderLine_FilterByOrderLineNumber");
+            //If 1 record is found (there should be either 1 or 0!)
             if (DB.Count == 1)
             {
+                //Copy the data from the database to the private data members
                 mOrderLineNumber = Convert.ToInt32(DB.DataTable.Rows[0]["OrderLineNumber"]);
                 mOrderNumber = Convert.ToInt32(DB.DataTable.Rows[0]["OrderNumber"]);
                 mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
                 mProductQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["ProductQuantity"]);
+                //Return that everything worked OK
                 return true;
             }
+            //If no record was found
             else
             {
+                //Return false indicating a problem
                 return false;
             }
         }
 
         public string Valid(string OrderNumber, string ProductID, string ProductQuantity)
         {
-            return "";
+            string Error = "";
+
+            if (OrderNumber.Length == 0)
+            {
+                Error = Error + "The Order Number may not be 0:  ";
+            }
+            if (OrderNumber.Length > 500)
+            {
+                Error = Error + "The Order Number must be less than 500 characters:  ";
+            }
+
+            return Error;
         }
 
     }

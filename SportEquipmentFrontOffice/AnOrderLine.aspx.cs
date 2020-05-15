@@ -37,28 +37,30 @@ public partial class AnOrderLine : System.Web.UI.Page
         clsOrderLine AnOrderLine = new clsOrderLine();
         string OrderNumber = txtOrderNumber.Text;
         string ProductID = txtProductID.Text;
+        string ProductQuantity = txtProductQuantity.Text;
 
         string Error = "";
-        Error = AnOrderLine.Valid(OrderNumber, ProductID);
+        Error = AnOrderLine.Valid(OrderNumber, ProductID, ProductQuantity);
         if (Error == "")
         {
 
             AnOrderLine.OrderLineNumber = OrderLineNumber;
             AnOrderLine.OrderNumber = Convert.ToInt32(OrderNumber);
             AnOrderLine.ProductID = Convert.ToInt32(ProductID);
+            AnOrderLine.ProductQuantity = Convert.ToInt32(ProductQuantity);
 
-            clsOrderCollection OrderList = new clsOrderCollection();
+            clsOrderCollection OrderLineList = new clsOrderCollection();
 
             if (OrderLineNumber == -1)
             {
-                OrderList.ThisOrder = AnOrderLine;
-                OrderList.Add();
+                OrderLineList.ThisOrderLine = AnOrderLine;
+                OrderLineList.Add();
             }
             else
             {
-                OrderList.ThisOrder.Find(OrderLineNumber);
-                OrderList.ThisOrder = AnOrderLine;
-                OrderList.Update();
+                OrderLineList.ThisOrderLine.Find(OrderLineNumber);
+                OrderLineList.ThisOrderLine = AnOrderLine;
+                OrderLineList.Update();
             }
         }
         else
@@ -74,17 +76,23 @@ public partial class AnOrderLine : System.Web.UI.Page
 
     protected void btnOrderLineFind_Click(object sender, EventArgs e)
     {
+        //Create an instance of the Order class
         clsOrderLine AnOrderLine = new clsOrderLine();
+        //Variable to store the primary key
         Int32 OrderLineNumber;
+        //Variable to store the result of the find operation
         Boolean Found = false;
-
+        //Get the primary key entered by the user
         OrderLineNumber = Convert.ToInt32(txtOrderLineNumber.Text);
+        //Find the record
         Found = AnOrderLine.Find(OrderLineNumber);
+        //If found
         if (Found == true)
         {
+            //Display the values of the properties in the form
             AnOrderLine.OrderNumber = Convert.ToInt32(txtOrderNumber.Text);
             AnOrderLine.ProductID = Convert.ToInt32(txtProductID.Text);
-
+            AnOrderLine.ProductQuantity = Convert.ToInt32(txtProductQuantity.Text);
         }
     }
 }

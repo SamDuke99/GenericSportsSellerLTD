@@ -18,7 +18,7 @@ public partial class DeleteOrderLine : System.Web.UI.Page
     protected void btnYes_Click(object sender, EventArgs e)
     {
         clsOrderLineCollection OrderLineBook = new clsOrderLineCollection();
-        OrderLineBook.ThisOrder.Find(OrderLineNumber);
+        OrderLineBook.ThisOrderLine.Find(OrderLineNumber);
         OrderLineBook.Delete();
         Response.Redirect("OrderLineList.aspx");
     }

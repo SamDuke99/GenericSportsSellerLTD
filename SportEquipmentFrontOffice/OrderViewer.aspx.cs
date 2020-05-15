@@ -10,8 +10,11 @@ public partial class OrderViewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsOrder AnOrder = new clsOrder();
-        AnOrder = (clsOrder)Session["AnOrder"];
-        Response.Write(AnOrder.OrderDescription);
+        //Create a new Instance of clsOrder
+        clsOrder AOrder = new clsOrder();
+        //Get the data from the session object
+        AOrder = (clsOrder)Session["AOrder"];
+        //Display the house # for this entry
+        Response.Write(AOrder.OrderDescription);
     }
 }

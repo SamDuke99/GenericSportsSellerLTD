@@ -88,13 +88,20 @@ public partial class AnOrder : System.Web.UI.Page
 
     protected void btnOrderNumberFind_Click(object sender, EventArgs e)
     {
+        //Create an instance of the Order class
         clsOrder AOrder = new clsOrder();
+        //Variable to store the primary key
         Int32 OrderNumber;
+        //Variable to store the result of the find operation
         Boolean Found = false;
+        //Get the primary key entered by the user
         OrderNumber = Convert.ToInt32(txtOrderNumber.Text);
+        //Find the record
         Found = AOrder.Find(OrderNumber);
+        //If found
         if (Found == true)
         {
+            //Display the values of the properties in the form
             AOrder.OrderDescription = txtOrderDescription.Text;
             AOrder.OrderDatePlaced = Convert.ToDateTime(txtOrderDatePlaced.Text);
             AOrder.OrderCompleted = Convert.ToBoolean(txtOrderCompleted.Text);

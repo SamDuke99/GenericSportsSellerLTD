@@ -7,7 +7,6 @@ namespace SportEquipmentTesting
     [TestClass]
     public class tstOrder
     {
-
         //good test data
         string OrderDescription = "plenty of items";
         string OrderDatePlaced = DateTime.Now.Date.ToString();
@@ -15,7 +14,6 @@ namespace SportEquipmentTesting
         string OrderPrice = "9.9";
         string OrderCustomerID = "1";
         string OrderStaffID = "1";
-
 
         [TestMethod]
         public void InstanceOK()
@@ -30,9 +28,13 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void OrderNumberOK()
         {
+            //Create an instance of the class we want to create
             clsOrder AOrder = new clsOrder();
+            //Create some test data to assign to the property
             Int32 TestData = 1;
+            //Assign the test data to the property
             AOrder.OrderNumber = TestData;
+            //Test to see that the 2 values are the same
             Assert.AreEqual(AOrder.OrderNumber, TestData);
         }
 
@@ -40,9 +42,13 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void OrderDescriptionOK()
         {
+            //Create an instance of the class we want to create
             clsOrder AOrder = new clsOrder();
+            //Create some test data to assign to the property
             string TestData = "123Test";
+            //Assign the test data to the property
             AOrder.OrderDescription = TestData;
+            //Test to see that the 2 values are the same
             Assert.AreEqual(AOrder.OrderDescription, TestData);
         }
 
@@ -50,9 +56,13 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void OrderDatePlacedOK()
         {
+            //Create an instance of the class we want to create
             clsOrder AOrder = new clsOrder();
+            //Create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
+            //Assign the test data to the property
             AOrder.OrderDatePlaced = TestData;
+            //Test to see that the 2 values are the same
             Assert.AreEqual(AOrder.OrderDatePlaced, TestData);
         }
 
@@ -60,9 +70,13 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void OrderCompletedOK()
         {
+            //Create an instance of the class we want to create
             clsOrder AOrder = new clsOrder();
+            //Create some test data to assign to the property
             Boolean TestData = true;
+            //Assign the test data to the property
             AOrder.OrderCompleted = TestData;
+            //Test to see that the 2 values are the same
             Assert.AreEqual(AOrder.OrderCompleted, TestData);
         }
 
@@ -70,9 +84,13 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void OrderPriceOK()
         {
+            //Create an instance of the class we want to create
             clsOrder AOrder = new clsOrder();
-            float TestData = 6;
+            //Create some test data to assign to the property
+            float TestData = 6.9F;
+            //Assign the test data to the property
             AOrder.OrderPrice = TestData;
+            //Test to see that the 2 values are the same
             Assert.AreEqual(AOrder.OrderPrice, TestData);
         }
 
@@ -80,9 +98,13 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void OrderCustomerIDOK()
         {
+            //Create an instance of the class we want to create
             clsOrder AOrder = new clsOrder();
+            //Create some test data to assign to the property
             Int32 TestData = 2;
+            //Assign the test data to the property
             AOrder.CustomerID = TestData;
+            //Test to see that the 2 values are the same
             Assert.AreEqual(AOrder.CustomerID, TestData);
         }
 
@@ -90,9 +112,13 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void OrderStaffIDOK()
         {
+            //Create an instance of the class we want to create
             clsOrder AOrder = new clsOrder();
+            //Create some test data to assign to the property
             Int32 TestData = 3;
+            //Assign the test data to the property
             AOrder.StaffID = TestData;
+            //Test to see that the 2 values are the same
             Assert.AreEqual(AOrder.StaffID, TestData);
         }
 
@@ -100,10 +126,15 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void FindMethodOK()
         {
+            //Create an instance of the class we want to create
             clsOrder AOrder = new clsOrder();
+            //Boolean variable to store the result of the validation
             Boolean Found = false;
+            //Create some test data to use with the record
             Int32 OrderNumber = 1;
+            //Invoke the method
             Found = AOrder.Find(OrderNumber);
+            //Test to see that the result is correct
             Assert.IsTrue(Found);
         }
 
@@ -111,15 +142,22 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void TestOrderNumberFound()
         {
+            //Create an instance of the class we want to create
             clsOrder AOrder = new clsOrder();
+            //Boolan variable to store the result of the search
             Boolean Found = false;
+            //Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
-            Int32 OrderNumber = 21;
+            //Create some test data to use with the record
+            Int32 OrderNumber = 2;
+            //Invoke the method
             Found = AOrder.Find(OrderNumber);
-            if (AOrder.OrderNumber != 21)
+            //Check the OrderNumber
+            if (AOrder.OrderNumber != 2)
             {
                 OK = false;
             }
+            //Test to see that the result is correct
             Assert.IsTrue(OK);
         }
 
@@ -143,15 +181,22 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void TestOrderDatePlacedFound()
         {
+            //Create an instance of the class we want to create
             clsOrder AOrder = new clsOrder();
+            //boolean variable to store the result of the search
             Boolean Found = false;
+            //Boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
-            Int32 OrderNumber = 21;
+            //Create some test data to use with the method
+            Int32 OrderNumber = 2;
+            //Invoke the method
             Found = AOrder.Find(OrderNumber);
+            //Check the property
             if (AOrder.OrderDatePlaced != Convert.ToDateTime("16/09/2020"))
             {
                 OK = false;
             }
+            //Test to see that the result is correct
             Assert.IsTrue(OK);
         }
 
@@ -223,10 +268,14 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void ValidMethodOK()
         {
+            //Create an instance of the classs we want to create
             clsOrder AOrder = new clsOrder();
+            //String variable to store any error message
             String Error = "";
+            //Invoke the method
             Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted,
                 OrderPrice, OrderCustomerID, OrderStaffID);
+            //Test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 

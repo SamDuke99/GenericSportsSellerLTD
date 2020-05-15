@@ -18,7 +18,7 @@ public partial class OrderLineList : System.Web.UI.Page
 
     void DisplayOrderLines()
     {
-        clsOrderLineCollection Orders = new clsOrderLineCollection();
+        clsOrderLineCollection OrderLines = new clsOrderLineCollection();
         lstOrderLineList.DataSource = OrderLines.OrderLineList;
         lstOrderLineList.DataValueField = "OrderLineNumber";
         lstOrderLineList.DataTextField = "OrderNumber";
@@ -77,7 +77,7 @@ public partial class OrderLineList : System.Web.UI.Page
     {
         clsOrderLineCollection OrderLines = new clsOrderLineCollection();
         OrderLines.ReportByOrderNumber("");
-        txtOrderNumber.Text = "";
+        txtOrderLineNumber.Text = "";
         lstOrderLineList.DataSource = OrderLines.OrderLineList;
         lstOrderLineList.DataValueField = "OrderLineNumber";
         lstOrderLineList.DataTextField = "OrderNumber";

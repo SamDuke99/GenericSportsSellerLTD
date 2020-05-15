@@ -48,6 +48,8 @@ namespace SportEquipmentClasses
             }
         }
 
+        public clsOrderLine ThisOrderLine { get; set; }
+
         //constructor
         public clsOrderCollection()
         {
