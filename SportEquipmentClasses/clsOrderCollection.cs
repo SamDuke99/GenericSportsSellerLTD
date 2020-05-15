@@ -12,27 +12,32 @@ namespace SportEquipmentClasses
         List<clsOrder> mOrderList = new List<clsOrder>();
         clsOrder mThisOrder = new clsOrder();
 
+        //Public property for the Order List
         public List<clsOrder> OrderList
         {
             get
             {
+                //Return the private data
                 return mOrderList;
             }
             set
             {
+                //Set the private data
                 mOrderList = value;
             }
         }
    
+        //Public property for count
         public int Count
         {
             get
             {
+                //Return the count of the list
                 return mOrderList.Count;
             }
             set
             {
-
+                //We shall worry about this later
             }
         }
 
@@ -53,6 +58,27 @@ namespace SportEquipmentClasses
         //constructor
         public clsOrderCollection()
         {
+            /*
+            //Var for the index
+            Int32 Index = 0;
+            //Var to store the record count
+            Int32 RecordCount = 0;
+            //Object for data connection
+            clsDataConnection DB = new clsDataConnection();
+            //Execute the stored procedure
+            DB.Execute("sproc_tblOrder_SelectAll");
+            //Get the count of records
+            RecordCount = DB.Count;
+            //While there are records to process
+            while (Index < RecordCount)
+            {
+                //Create a blank addrress
+                clsOrder AOrder = new clsOrder();
+                //read in the fields from the current record
+                
+            }
+            */
+            
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblOrder_SelectAll");
             PopulateArray(DB);

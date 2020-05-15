@@ -12,7 +12,7 @@
         </div>
         <asp:ListBox ID="lstOrderLineList" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute; height: 267px; width: 478px"></asp:ListBox>
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" style="z-index: 1; left: 25px; top: 340px; position: absolute" Text="Add" />
-        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 81px; top: 342px; position: absolute" Text="Delete" />
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" style="z-index: 1; left: 82px; top: 342px; position: absolute" Text="Delete" />
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 164px; top: 343px; position: absolute" Text="Edit" />
         <asp:Label ID="lblEnterOrderNumber" runat="server" style="z-index: 1; left: 23px; top: 379px; position: absolute" Text="Enter A Order Line Number"></asp:Label>
         <asp:TextBox ID="txtOrderLineNumber" runat="server" style="z-index: 1; left: 239px; top: 384px; position: absolute"></asp:TextBox>

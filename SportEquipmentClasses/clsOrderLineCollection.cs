@@ -12,27 +12,32 @@ namespace SportEquipmentClasses
         List<clsOrderLine> mOrderLineList = new List<clsOrderLine>();
         clsOrderLine mThisOrderLine = new clsOrderLine();
 
+        //Public property for the OrderLine list
         public List<clsOrderLine> OrderLineList
         {
             get
             {
+                //Return the private data
                 return mOrderLineList;
             }
             set
             {
+                //Set the private data
                 mOrderLineList = value;
             }
         }
 
+        //Public property for count
         public int Count
         {
             get
             {
+                //Return the count of the list
                 return mOrderLineList.Count;
             }
             set
             {
-
+                //We shall worry about this later
             }
         }
 

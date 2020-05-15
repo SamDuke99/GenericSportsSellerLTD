@@ -27,7 +27,9 @@ public partial class OrderList : System.Web.UI.Page
 
     protected void btnAdd_Click(object sender, EventArgs e)
     {
+        //Store -1 into the session object to indicate this is a new record
         Session["OrderNumber"] = -1;
+        //redirect to the data entry page
         Response.Redirect("AnOrder.aspx");
     }
 

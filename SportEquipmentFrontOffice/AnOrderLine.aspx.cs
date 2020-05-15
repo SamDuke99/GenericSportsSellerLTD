@@ -44,13 +44,16 @@ public partial class AnOrderLine : System.Web.UI.Page
         if (Error == "")
         {
 
-            AnOrderLine.OrderLineNumber = OrderLineNumber;
             AnOrderLine.OrderNumber = Convert.ToInt32(OrderNumber);
             AnOrderLine.ProductID = Convert.ToInt32(ProductID);
             AnOrderLine.ProductQuantity = Convert.ToInt32(ProductQuantity);
 
             clsOrderCollection OrderLineList = new clsOrderCollection();
+            OrderLineList.ThisOrderLine = AnOrderLine;
+            OrderLineList.Add();
+            Response.Redirect("OrderLineList.aspx");
 
+            /*
             if (OrderLineNumber == -1)
             {
                 OrderLineList.ThisOrderLine = AnOrderLine;
@@ -62,6 +65,7 @@ public partial class AnOrderLine : System.Web.UI.Page
                 OrderLineList.ThisOrderLine = AnOrderLine;
                 OrderLineList.Update();
             }
+            */
         }
         else
         {
