@@ -153,14 +153,35 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void UpdateMethodOK()
         {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLine TestItem = new clsOrderLine();
+            Int32 PrimaryKey = 0;
 
+            TestItem.OrderNumber = 1;
+            TestItem.ProductID = 1;
+            TestItem.ProductQuantity = 1;
+
+            AllOrderLines.ThisOrderLine = TestItem;
+            PrimaryKey = AllOrderLines.Add();
+
+            TestItem.OrderLineNumber = PrimaryKey;
+            TestItem.OrderNumber = 2;
+            TestItem.ProductID = 2;
+            TestItem.ProductQuantity = 2;
+
+            AllOrderLines.ThisOrderLine = TestItem;
+            AllOrderLines.Update();
+            AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            Assert.AreEqual(AllOrderLines.ThisOrderLine, TestItem);
         }
 
         //ReportByOrderNumber
         [TestMethod]
         public void ReportByOrderNumber()
         {
-
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
+            
         }
 
         //ReportByOrderNumberNoneFound
@@ -174,7 +195,9 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void ReportByOrderNumberDataFound()
         {
-
+           //clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
+           //Boolean OK = true;
+            
         }
 
     }

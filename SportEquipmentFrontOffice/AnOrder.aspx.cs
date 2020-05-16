@@ -53,6 +53,7 @@ public partial class AnOrder : System.Web.UI.Page
         if (Error == "")
         {
 
+            AnOrder.OrderNumber = Convert.ToInt32(OrderNumber);
             AnOrder.OrderDescription = OrderDescription;
             AnOrder.OrderDatePlaced = Convert.ToDateTime(OrderDatePlaced);
             AnOrder.OrderCompleted = Convert.ToBoolean(OrderCompleted);
@@ -62,11 +63,6 @@ public partial class AnOrder : System.Web.UI.Page
 
             clsOrderCollection OrderList = new clsOrderCollection();
 
-            OrderList.ThisOrder = AnOrder;
-            OrderList.Add();
-            Response.Redirect("OrderList.aspx");
-
-            /*
             if (OrderNumber == -1)
             {
                 OrderList.ThisOrder = AnOrder;
@@ -78,7 +74,7 @@ public partial class AnOrder : System.Web.UI.Page
                 OrderList.ThisOrder = AnOrder;
                 OrderList.Update();
             }
-            */
+            Response.Redirect("OrderList.aspx");
         }
         else
         {

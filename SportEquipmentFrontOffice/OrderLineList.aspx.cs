@@ -66,7 +66,7 @@ public partial class OrderLineList : System.Web.UI.Page
     protected void btnApply_Click(object sender, EventArgs e)
     {
         clsOrderLineCollection OrderLines = new clsOrderLineCollection();
-        OrderLines.ReportByOrderLineNumber(txtOrderLineNumber.Text);
+        OrderLines.ReportByOrderNumber(txtOrderNumber.Text);
         lstOrderLineList.DataSource = OrderLines.OrderLineList;
         lstOrderLineList.DataValueField = "OrderLineNumber";
         lstOrderLineList.DataTextField = "OrderNumber";
@@ -77,7 +77,7 @@ public partial class OrderLineList : System.Web.UI.Page
     {
         clsOrderLineCollection OrderLines = new clsOrderLineCollection();
         OrderLines.ReportByOrderNumber("");
-        txtOrderLineNumber.Text = "";
+        txtOrderNumber.Text = "";
         lstOrderLineList.DataSource = OrderLines.OrderLineList;
         lstOrderLineList.DataValueField = "OrderLineNumber";
         lstOrderLineList.DataTextField = "OrderNumber";
