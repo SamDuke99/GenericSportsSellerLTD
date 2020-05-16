@@ -23,29 +23,38 @@ namespace SportEquipmentTesting
         public void ProductDetailsOK()
         {
             clsStock AnDetail = new clsStock();
-            String TestData = 50;
-            AnDetail.ProductId = TestData;
-            Assert.AreEqual(AnDetail.ProductId, TestData);
+            String TestData = "50";
+            AnDetail.Detail = TestData;
+            Assert.AreEqual(AnDetail.Detail, TestData);
         }
         public void PriceOK()
         {
             clsStock AnPrice = new clsStock();
-            Decimal TestData = 9.99;
-            AnPrice.ProductId = TestData;
-            Assert.AreEqual(AnPrice.ProductId, TestData);
+            Decimal TestData = 9.99M;
+            AnPrice.Price = TestData;
+            Assert.AreEqual(AnPrice.Price, TestData);
         }
         public void DateAcquiredOK()
         {
             clsStock Aquired = new clsStock();
             DateTime TestData = DateTime.Now.Date;
-            Aquired.ProductId = TestData;
-            Assert.AreEqual(Aquired.ProductId, TestData);
+            Aquired.DateAcquired = TestData;
+            Assert.AreEqual(Aquired.DateAcquired, TestData);
         }
         public void InStockOK()
         {
-            clsStock AnStock = new clsStock();
+            clsStock InStock = new clsStock();
             Boolean TestData = true;
-            AnStock.ProductId = TestData;
-            Assert.AreEqual(AnStock.ProductId, TestData);
+            InStock.Result = TestData;
+            Assert.AreEqual(InStock.Result, TestData);
         }
+        public void FindMethodOK()
+        {
+            clsStock AnDetail = new clsStock();
+            Boolean Found = false;
+            Int32 ProductID = 1;
+            Found = AnDetail.Find(ProductID);
+            Assert.IsTrue(Found);
+        }
+    }
 }

@@ -10,7 +10,9 @@ public partial class AnDetail : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        
+        clsStock AnDetail = new clsStock();
+        AnDetail = (clsStock)Session["AnDetail"];
+        Response.Write(AnDetail.ProductId);
     }
     protected void BtnSubmit_Click(object sender, EventArgs e)
     {
