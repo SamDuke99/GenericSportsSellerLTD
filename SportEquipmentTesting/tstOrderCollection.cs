@@ -147,33 +147,9 @@ namespace SportEquipmentTesting
         public void DeleteMethodOK()
         {
             clsDataConnection DB = new clsDataConnection();
+            clsOrder mThisOrder = new clsOrder();
             DB.AddParameter("@OrderNumber", mThisOrder.OrderNumber);
             DB.Execute("sproc_tblOrder_Delete");
-
-            /*
-            //Create an instance of the class we want to create
-            clsOrderCollection AllOrders = new clsOrderCollection();
-            //Create the item of test data
-            clsOrder TestItem = new clsOrder();
-            Int32 PrimaryKey = 0;
-
-            TestItem.OrderNumber = 1;
-            TestItem.OrderDescription = "abc";
-            TestItem.OrderDatePlaced = DateTime.Now.Date;
-            TestItem.OrderCompleted = false;
-            TestItem.OrderPrice = (float)1.11;
-            TestItem.CustomerID = 1;
-            TestItem.StaffID = 1;
-
-            AllOrders.ThisOrder = TestItem;
-            PrimaryKey = AllOrders.Add();
-            TestItem.OrderNumber = PrimaryKey;
-            AllOrders.ThisOrder.Find(PrimaryKey);
-            AllOrders.Delete();
-
-            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
-            Assert.IsFalse(Found);
-            */
         }
 
         [TestMethod]

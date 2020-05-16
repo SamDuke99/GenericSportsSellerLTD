@@ -126,27 +126,10 @@ namespace SportEquipmentTesting
         public void DeleteMethodOK()
         {
             clsDataConnection DB = new clsDataConnection();
+            clsOrderLine mThisOrderLine = new clsOrderLine();
             DB.AddParameter("@OrderLineNumber", mThisOrderLine.OrderLineNumber);
             DB.Execute("sproc_tblOrderLine_Delete");
 
-            /*
-            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
-            clsOrderLine TestItem = new clsOrderLine();
-            Int32 PrimaryKey = 0;
-
-            TestItem.OrderLineNumber = 1;
-            TestItem.OrderNumber = 1;
-            TestItem.ProductID = 1;
-            TestItem.ProductQuantity = 1;
-
-            AllOrderLines.ThisOrderLine = TestItem;
-            PrimaryKey = AllOrderLines.Add();
-            TestItem.OrderLineNumber = PrimaryKey;
-            AllOrderLines.ThisOrderLine.Find(PrimaryKey);
-            AllOrderLines.Delete();
-            Boolean Found = AllOrderLines.ThisOrderLine.Find(PrimaryKey);
-            Assert.IsFalse(Found);
-            */
         }
 
         //UpdateMethodOK
