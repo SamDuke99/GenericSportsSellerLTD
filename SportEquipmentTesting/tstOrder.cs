@@ -279,7 +279,15 @@ namespace SportEquipmentTesting
             Assert.AreEqual(Error, "");
         }
 
-        //OrderDescription Tests
+        //OrderDescription Tests Done
+        //OrderDescriptionMinLessOne
+        //OrderDescriptionMin
+        //OrderDecriptionMinPlusOne
+        //OrderDecriptionMaxLessOne
+        //OrderDecriptionMax
+        //OrderDecriptionMaxPlusOne
+        //OrderDecriptionMid
+        //OrderDecriptionExtremeMax
         [TestMethod]
         public void OrderDescriptionMinLessOne()
         {
@@ -317,7 +325,7 @@ namespace SportEquipmentTesting
             String Error = "";
             //50 max 
             String OrderDescription = "";
-            OrderDescription = OrderDescription.PadRight(49, 'a');        
+            OrderDescription = OrderDescription.PadRight(49, 'a');
             Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
             Assert.AreNotEqual(Error, "");
         }
@@ -341,7 +349,7 @@ namespace SportEquipmentTesting
             String Error = "";
             //50 max. This should fail! 
             String OrderDescription = "";
-            OrderDescription = OrderDescription.PadRight(51, 'a');        
+            OrderDescription = OrderDescription.PadRight(51, 'a');
             Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
             Assert.AreNotEqual(Error, "");
         }
@@ -371,6 +379,12 @@ namespace SportEquipmentTesting
         }
 
         //OrderDatePlaced Tests
+        //OrderDatePlacedExtremeMin
+        //OrderDatePlacedMinLessOne
+        //OrderDatePlacedMin
+        //OrderDatePlacedMinPlusOne
+        //OrderDatePlacedExtremeMax
+        //OrderDatePlacedInvalidData
         [TestMethod]
         public void OrderDatePlacedExtremeMin()
         {
@@ -445,8 +459,380 @@ namespace SportEquipmentTesting
             Assert.AreNotEqual(Error, "");
         }
 
+        //OrderCompleted
+        //OrderCompletedMin
+        [TestMethod]
+        public void OrderCompletedMin()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            Boolean TestData = false;
+            String OrderCompleted = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //OrderCompletedMax
+        [TestMethod]
+        public void OrderCompletedMax()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            Boolean TestData = true;
+            String OrderCompleted = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //OrderCompletedInvalidData
+        [TestMethod]
+        public void OrderCompletedInvalidData()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            String TestData = "this is not a boolean!";
+            String OrderCompleted = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+
         //OrderPrice Tests
-        
+        //OrderPriceExtremeMin
+        [TestMethod]
+        public void OrderPriceExtremeMin()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            float TestData = -1000.0F;
+            String OrderPrice = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //OrderPriceMinMinus1
+        [TestMethod]
+        public void OrderPriceMinMinus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            float TestData = -1.0F;
+            String OrderPrice = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //OrderPriceMin
+        [TestMethod]
+        public void OrderPriceMin()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            float TestData = 0.0F;
+            String OrderPrice = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //OrderPriceMinPlus1
+        [TestMethod]
+        public void OrderPriceMinPlus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            float TestData = 1.0F;
+            String OrderPrice = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        //OrderPriceMaxMinus1
+        [TestMethod]
+        public void OrderPriceMaxMinus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            float TestData = 999.0F;
+            String OrderPrice = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //OrderPriceMax
+        [TestMethod]
+        public void OrderPriceMax()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            float TestData = 1000.0F;
+            String OrderPrice = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        //OrderPriceMaxPlus1
+        [TestMethod]
+        public void OrderPriceMaxPlus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            float TestData = 1001.0F;
+            String OrderPrice = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //OrderPriceMid
+        [TestMethod]
+        public void OrderPriceMid()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            float TestData = 500.0F;
+            String OrderPrice = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //OrderPriceExtremeMax
+        [TestMethod]
+        public void OrderPriceExtremeMax()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            float TestData = 10000.0F;
+            String OrderPrice = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //OrderPriceInvalidData
+        [TestMethod]
+        public void OrderPriceInvalidData()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            String TestData = "this is not a float!";
+            String OrderPrice = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //CustomerID
+        //CustomerIDExtremeMin
+        [TestMethod]
+        public void CustomerIDExtremeMin()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = -100;
+            String CustomerID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //CustomerIDMinMinus1
+        [TestMethod]
+        public void CustomerIDMinMinus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 0;
+            String CustomerID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //CustomerIDMin
+        [TestMethod]
+        public void CustomerIDMin()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 1;
+            String CustomerID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //CustomerIDMinPlus1
+        [TestMethod]
+        public void CustomerIDMinPlus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 2;
+            String CustomerID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //CustomerIDMaxMinus1
+        [TestMethod]
+        public void CustomerIDMaxMinus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 9999;
+            String CustomerID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //CustomerIDMax
+        [TestMethod]
+        public void CustomerIDMax()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 10000;
+            String CustomerID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //CustomerIDMaxPlus1
+        [TestMethod]
+        public void CustomerIDMaxPlus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 10001;
+            String CustomerID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //CustomerIDMid
+        [TestMethod]
+        public void CustomerIDMid()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 5000;
+            String CustomerID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //CustomerIDExtremeMax
+        [TestMethod]
+        public void CustomerIDExtremeMax()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 100000;
+            String CustomerID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //CustomerIDInvalidData
+        [TestMethod]
+        public void CustomerIDInvalidData()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            String TestData = "This is not an integer";
+            String CustomerID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //StaffID
+        //StaffIDExtremeMin
+        [TestMethod]
+        public void StaffIDExtremeMin()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = -100;
+            String StaffID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //StaffIDMinMinus1
+        [TestMethod]
+        public void StaffIDMinMinus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 0;
+            String StaffID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //StaffIDMin
+        [TestMethod]
+        public void StaffIDMin()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 1;
+            String StaffID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //StaffIDMinPlus1
+        [TestMethod]
+        public void StaffIDMinPlus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 2;
+            String StaffID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //StaffIDMaxMinus1
+        [TestMethod]
+        public void StaffIDMaxMinus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 9999;
+            String StaffID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //StaffIDMax
+        [TestMethod]
+        public void StaffIDMax()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 10000;
+            String StaffID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //StaffIDMaxPlus1
+        [TestMethod]
+        public void StaffIDMaxPlus1()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 10001;
+            String StaffID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //StaffIDMid
+        [TestMethod]
+        public void StaffIDMid()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 5000;
+            String StaffID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //StaffIDExtremeMax
+        [TestMethod]
+        public void StaffIDExtremeMax()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            int TestData = 100000;
+            String StaffID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+        //StaffIDInvalidData
+        [TestMethod]
+        public void StaffIDInvalidData()
+        {
+            clsOrder AOrder = new clsOrder();
+            String Error = "";
+            String TestData = "This is not an int";
+            String StaffID = TestData.ToString();
+            Error = AOrder.Valid(OrderDescription, OrderDatePlaced, OrderCompleted, OrderPrice, OrderCustomerID, OrderStaffID);
+            Assert.AreNotEqual(Error, "");
+        }
+
 
     }
 }
