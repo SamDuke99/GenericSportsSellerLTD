@@ -67,12 +67,23 @@ namespace SportEquipmentClasses
         }
         public bool Find(int ProductNo)
         {
-            mProductId = 1;
-            mDateAcquired = Convert.ToDateTime("16/9/2015");
-            mDetail = "21";
-            mPrice = 9.99M;
-            mResult = true;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductId", ProductId);
+            DB.Execute("sproc_tblStock_FilterByProductID");
+            if (DB.Count == 1)
+            {
+                mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                mDateAcquired = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAcquired"]);
+                mDetail = Convert.ToString(DB.DataTable.Rows[0]["Detail"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                mResult = Convert.ToBoolean(DB.DataTable.Rows[0]["Result"]);
+                return true;
+            }
+            
+            else
+            {
+                return false;
+            }
         }
         public string Gender { get; set; }
         public string Size { get; set; }
