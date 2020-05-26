@@ -85,6 +85,29 @@ namespace SportEquipmentClasses
                 return false;
             }
         }
+
+        public string ValidProductId(int productId)
+        {
+            string errorMsg = "";
+            int value;
+            try
+            {
+                value = Convert.ToInt32(ProductId);
+            }
+            catch (System.FormatException)
+            {
+                errorMsg = "ID must be a positive integer!";
+                return errorMsg;
+            }
+
+            if (value < 0 || value > 256)
+            {
+                errorMsg = "ID must be a positive integer not greater than 256!";
+            }
+
+            return errorMsg;
+        }
+
         public string Gender { get; set; }
         public string Size { get; set; }
         public string Colour { get; set; }
