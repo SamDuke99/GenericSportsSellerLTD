@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DeleteDetail.aspx.cs" Inherits="Default2" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DeleteDetail.aspx.cs" Inherits="" %>
 
 <!DOCTYPE html>
 
