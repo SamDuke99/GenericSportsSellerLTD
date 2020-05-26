@@ -84,6 +84,10 @@
              left: 100px; 
              top: 250px; 
              position: absolute; height: 26px;" Text="Submit" OnClick="BtnSubmit_Click" />
+        <asp:Button ID="BtnFind" runat="server" style="z-index: 1; 
+             left: 300px; 
+             top: 120px; 
+             position: absolute; height: 26px;" Text="Find" OnClick="BtnFind_Click" />
 
         <asp:Label ID="lblError" runat="server" style="z-index: 1; 
             left: 20px; 
