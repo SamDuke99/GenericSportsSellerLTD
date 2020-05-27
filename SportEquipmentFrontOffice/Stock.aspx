@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AnDetail.aspx.cs" Inherits="AnDetail" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Stock.aspx.cs" Inherits="Stock" %>
 
 <!DOCTYPE html>
 
@@ -24,29 +24,29 @@
                   height: 20px" Text="Product ID">
         </asp:Label>
         </p>
-        <asp:Label ID="lblGender" runat="server" style="z-index: 1; 
+        <asp:Label ID="lblDetail" runat="server" style="z-index: 1; 
                   left: 21px; 
                   top: 145px; 
                   position: absolute; 
-                  height: 20px" Text="Gender">
+                  height: 20px" Text="Product Details">
         </asp:Label>
-        <asp:Label ID="lblSize" runat="server" style="z-index: 1; 
+        <asp:Label ID="lblPrice" runat="server" style="z-index: 1; 
                   left: 21px; 
                   top: 170px; 
                   position: absolute; 
-                  height: 20px" Text="Size">
+                  height: 20px" Text="Price">
         </asp:Label>
-        <asp:Label ID="lblColour" runat="server" style="z-index: 1; 
+        <asp:Label ID="lblDateAcquired" runat="server" style="z-index: 1; 
                   left: 21px; 
                   top: 195px; 
                   position: absolute; 
-                  height: 20px" Text="Colour">
+                  height: 20px" Text="Date Acquired">
         </asp:Label>
-        <asp:Label ID="lblBrand" runat="server" style="z-index: 1; 
+        <asp:Label ID="lblInStock" runat="server" style="z-index: 1; 
                   left: 21px; 
                   top: 220px; 
                   position: absolute; 
-                  height: 20px" Text="Brand">
+                  height: 20px" Text="In Stock">
         </asp:Label>
 
 
@@ -55,22 +55,22 @@
              top: 120px; 
              position: absolute">
         </asp:TextBox>
-        <asp:TextBox ID="txtGender" runat="server" style="z-index: 1; 
+        <asp:TextBox ID="txtProductDetails" runat="server" style="z-index: 1; 
              left: 160px; 
              top: 145px; 
              position: absolute">
         </asp:TextBox>
-        <asp:TextBox ID="txtSize" runat="server" style="z-index: 1; 
+        <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; 
              left: 160px; 
              top: 170px; 
              position: absolute">
         </asp:TextBox>
-        <asp:TextBox ID="txtColour" runat="server" style="z-index: 1; 
+        <asp:TextBox ID="txtDateAcquired" runat="server" style="z-index: 1; 
              left: 160px; 
              top: 195px; 
              position: absolute">
         </asp:TextBox>
-        <asp:TextBox ID="txtBrand" runat="server" style="z-index: 1; 
+        <asp:TextBox ID="txtInStock" runat="server" style="z-index: 1; 
              left: 160px; 
              top: 220px; 
              position: absolute">
