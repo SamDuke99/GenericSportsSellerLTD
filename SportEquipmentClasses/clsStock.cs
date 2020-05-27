@@ -5,7 +5,7 @@ namespace SportEquipmentClasses
     public class clsStock
     {
         private DateTime mDateAcquired;
-        private string mDetail;
+        private string mProductDetails;
         private decimal mPrice;
         private bool mResult;
         private int mProductId;
@@ -21,15 +21,15 @@ namespace SportEquipmentClasses
                 mProductId = value;
             }
         }
-        public string Detail
+        public string ProductDetails
         {
             get
             {
-                return mDetail;
+                return mProductDetails;
             }
             set
             {
-                mDetail = value;
+                mProductDetails = value;
             }
         }
         public decimal Price
@@ -74,7 +74,7 @@ namespace SportEquipmentClasses
             {
                 mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
                 mDateAcquired = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAcquired"]);
-                mDetail = Convert.ToString(DB.DataTable.Rows[0]["Detail"]);
+                mProductDetails = Convert.ToString(DB.DataTable.Rows[0]["ProductDetails"]);
                 mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
                 mResult = Convert.ToBoolean(DB.DataTable.Rows[0]["Result"]);
                 return true;
@@ -86,7 +86,9 @@ namespace SportEquipmentClasses
             }
         }
 
-        public string ValidProductId(int productId)
+        
+
+        public string ValidProductId(int ProductId)
         {
             string errorMsg = "";
             int value;
@@ -107,11 +109,38 @@ namespace SportEquipmentClasses
 
             return errorMsg;
         }
+        public string ValidProductDetails(string ProductDetails)
+        {
+            if (ProductDetails.Length == 0)
+                return "Product Details must be at least 1 character long!";
 
-        public string Gender { get; set; }
-        public string Size { get; set; }
-        public string Colour { get; set; }
-        public string Brand { get; set; }
-        public string Position { get; set; }
+            if (ProductDetails.Length > 50)
+                return "Product Details cannot be longer than 50 characters!";
+
+            foreach (char c in ProductDetails)
+            {
+                if ((!Char.IsLetter(c) && c != ' ') || c >= sbyte.MaxValue)
+                    return "Product Details must contain only ascii letters!";
+            }
+
+            return "";
+        }
+
+        public string ValidDateAcquired(string DateAcquired)
+        {
+            string errorMsg = "";
+
+            try
+            {
+                DateTime dateTemp = Convert.ToDateTime(DateAcquired);
+            }
+            catch
+            {
+                errorMsg = "Date should be in DD/MM/YYYY format!";
+            }
+
+            return errorMsg;
+        }
+
     }
 }

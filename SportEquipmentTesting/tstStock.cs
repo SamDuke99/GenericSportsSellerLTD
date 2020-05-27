@@ -26,8 +26,8 @@ namespace SportEquipmentTesting
         {
             clsStock AnDetail = new clsStock();
             String TestData = "50";
-            AnDetail.Detail = TestData;
-            Assert.AreEqual(AnDetail.Detail, TestData);
+            AnDetail.ProductDetails = TestData;
+            Assert.AreEqual(AnDetail.ProductDetails, TestData);
         }
         [TestMethod]
         public void PriceOK()
@@ -98,7 +98,7 @@ namespace SportEquipmentTesting
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = ProductID.Find(ProductId);
-            if (ProductID.Detail != "Mens")
+            if (ProductID.ProductDetails != "Mens")
             {
                 OK = false;
             }

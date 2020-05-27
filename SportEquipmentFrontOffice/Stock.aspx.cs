@@ -6,12 +6,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using SportEquipmentClasses;
 
-public partial class AnDetail : System.Web.UI.Page
+public partial class Stock : System.Web.UI.Page
 {
     Int32 ProductId;
     protected void Page_Load(object sender, EventArgs e)
     {
-        ProductId = Convert.ToInt32(Session["ProductId"]);
+        ProductId = Convert.ToInt32(Session["ProductID"]);
         if (IsPostBack == false)
         {
             if (ProductId != -1)
@@ -24,24 +24,23 @@ public partial class AnDetail : System.Web.UI.Page
     {
         clsStockCollection stockList = new clsStockCollection();
         stockList.ThisProduct.Find(ProductId);
-        txtProductID.Text = stockList.ThisProduct.ProductId.ToString();
-        txtDetail.Text = stockList.ThisProduct.Detail.ToString();
+        txtProductId.Text = stockList.ThisProduct.ProductId.ToString();
+        txtProductDetails.Text = stockList.ThisProduct.ProductDetails.ToString();
         txtPrice.Text = stockList.ThisProduct.Price.ToString();
-        txtPosition.Text = stockList.ThisProduct.Position.ToString();
         txtDateAcquired.Text = stockList.ThisProduct.DateAcquired.ToString();
-        txtResult.Text = stockList.ThisProduct.Result.ToString();
+        txtInStock.Text = stockList.ThisProduct.Result.ToString();
     }
 
     protected void BtnSubmit_Click(object sender, EventArgs e)
     {
         clsStock stock = new clsStock();
-        stock.ProductId = Convert.ToInt32( txtProductID.Text);
-        stock.Detail = txtDetail.Text;
-        stock.Price = txtPrice.Text;
-        stock.DateAcquired = txtDateAcquired.Text;
-        stock.Result = txtResult.Text;
+        stock.ProductId = Convert.ToInt32(txtProductID.Text);
+        stock.ProductDetails = txtProductDetails.Text;
+        stock.Price = Convert.ToDecimal(txtPrice.Text);
+        stock.DateAcquired = Convert.ToDateTime(txtDateAcquired.Text);
+        stock.Result = Convert.ToBoolean(txtInStock.Text);
         Session["stock"] = stock;
-        Response.Write("AnDetail.aspx");
+        Response.Write("Stock.aspx");
 
         if (stock.ValidProductId(ProductId) != "")
         {
@@ -49,33 +48,33 @@ public partial class AnDetail : System.Web.UI.Page
             return;
         }
 
-        if (stock.ValidDetail(Detail) != "")
+        if (stock.ValidProductDetails(ProductDetails) != "")
         {
-            lblDetail.Text = stock.ValidDetail(Detail);
+            lblProductDetails.Text = stock.ValidProductDetails(ProductDetails);
             return;
         }
 
-        if (stock.ValidPrice(price) != "")
+        if (stock.ValidPrice(txtPrice) != "")
         {
-            lblPrice.Text = stock.ValidPrice(price);
+            lblPrice.Text = stock.ValidPrice(txtPrice);
             return;
         }
 
-        if (stock.ValidDateAcquired(dateacquired) != "")
+        if (stock.ValidDateAcquired(DateAcquired) != "")
         {
-            lblDateAcquired.Text = stock.ValidDateAcquired(dateacquired);
+            lblDateAcquired.Text = stock.ValidDateAcquired(DateAcquired);
             return;
         }
 
-        if (stock.ValidResult(result) != "")
+        if (stock.ValidInStock(txtInStock) != "")
         {
-            lblResult.Text = stock.ValidResult(result);
+            lblInStock.Text = stock.ValidInStock(txtInStock);
             return;
         }
 
         stock.ProductId = Convert.ToInt32(ProductId);
-        stock.DateAcquired = Convert.ToDateTime(DateAquired);
-        stock.Detail = Detail;
+        stock.DateAcquired = Convert.ToDateTime(DateAcquired);
+        stock.ProductDetails = ProductDetails;
         stock.Price = Price;
         stock.Result = Result;
         clsStockCollection stockList = new clsStockCollection();
@@ -95,12 +94,11 @@ public partial class AnDetail : System.Web.UI.Page
         Response.Redirect("StockList.aspx");
 
     }
-}
+
     protected void BtnCancel_Click(object sender, EventArgs e)
     {
 
     }
-
     protected void BtnFind_Click(object sender, EventArgs e)
     {
         clsStock stock = new clsStock();
@@ -108,30 +106,30 @@ public partial class AnDetail : System.Web.UI.Page
         // Checks if the input is correct
         if (stock.ValidProductId(txtProductId.Text) != "")
         {
-            lblError.Text = stock.ValidId(txtProductId.Text);
-            txtDetail.Text = "";
+            lblError.Text = stock.ValidProductId(txtProductId.Text);
+            txtProductDetails.Text = "";
             txtPrice.Text = "";
             txtDateAcquired.Text = "";
-            chkResult.Checked = false;
+            txtInStock.Text = "";
             return;
         }
 
-        Int32 staffId = Convert.ToInt32(txtProductId.Text);
+        Int32 ProductId = Convert.ToInt32(txtProductId.Text);
 
         bool found = stock.Find(ProductId);
         if (found)
         {
-            txtDetail.Text = stock.Detail;
-            txtPrice.Text = stock.Price;
+            txtProductDetails.Text = stock.ProductDetails;
+            txtPrice.Text = ""; 
             txtDateAcquired.Text = Convert.ToString(stock.DateAcquired);
-            chkResult.Checked = true;
+            txtInStock.Text = "";
         }
         else
         {
-            txtDetail.Text = "";
+            txtProductDetails.Text = "";
             txtPrice.Text = "";
-            txtDateAcquired.Text = "";
-            chkResult.Checked = false;
+            txtDateAcquired.Text = Convert.ToString(stock.DateAcquired);
+            txtInStock.Text = "";
             lblError.Text = "Record with provided ID does not exist";
         }
     }

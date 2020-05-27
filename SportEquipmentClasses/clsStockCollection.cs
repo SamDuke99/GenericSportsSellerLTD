@@ -26,7 +26,7 @@ namespace SportEquipmentClasses
         {
             clsDataConnection db = new clsDataConnection();
             db.AddParameter("@productid", thisProduct.ProductId);
-            db.AddParameter("@detail", thisProduct.Detail);
+            db.AddParameter("@detail", thisProduct.ProductDetails);
             db.AddParameter("@price", thisProduct.Price);
             db.AddParameter("@dateacquired", thisProduct.DateAcquired);
             db.AddParameter("@result", thisProduct.Result);
@@ -44,7 +44,7 @@ namespace SportEquipmentClasses
         {
             clsDataConnection db = new clsDataConnection();
             db.AddParameter("@productid", thisProduct.ProductId);
-            db.AddParameter("@detail", thisProduct.Detail);
+            db.AddParameter("@detail", thisProduct.ProductDetails);
             db.AddParameter("@price", thisProduct.Price);
             db.AddParameter("@dateacquired", thisProduct.DateAcquired);
             db.AddParameter("@result", thisProduct.Result);
@@ -71,7 +71,7 @@ namespace SportEquipmentClasses
                 clsStock stock = new clsStock();
                 stock.ProductId = Convert.ToInt32(db.DataTable.Rows[index]["ProductID"]);
                 stock.DateAcquired = Convert.ToDateTime(db.DataTable.Rows[index]["DateAcquired"]);
-                stock.Detail = Convert.ToString(db.DataTable.Rows[index]["Detail"]);
+                stock.ProductDetails = Convert.ToString(db.DataTable.Rows[index]["Detail"]);
                 stock.Price = Convert.ToDecimal(db.DataTable.Rows[index]["Price"]);
                 stock.Result = Convert.ToBoolean(db.DataTable.Rows[index]["Result"]);
                 index++;

@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Stock.aspx.cs" Inherits="Stock" %>
 
 <!DOCTYPE html>
+<script runat="server">
+</script>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -17,14 +20,14 @@
 <body>
     <form id="form1" runat="server">
         <p>
-        <asp:Label ID="lblProductID" runat="server" style="z-index: 1; 
+        <asp:Label ID="lblProductId" runat="server" style="z-index: 1; 
                   left: 21px; 
                   top: 118px; 
                   position: absolute; 
                   height: 20px" Text="Product ID">
         </asp:Label>
         </p>
-        <asp:Label ID="lblDetail" runat="server" style="z-index: 1; 
+        <asp:Label ID="lblProductDetails" runat="server" style="z-index: 1; 
                   left: 21px; 
                   top: 145px; 
                   position: absolute; 
@@ -50,7 +53,7 @@
         </asp:Label>
 
 
-        <asp:TextBox ID="txtProductID" runat="server" style="z-index: 1; 
+        <asp:TextBox ID="txtProductId" runat="server" style="z-index: 1; 
              left: 160px; 
              top: 120px; 
              position: absolute">
@@ -79,7 +82,7 @@
         <asp:Button ID="BtnCancel" runat="server" style="z-index: 1; 
              left: 160px; 
              top: 250px; 
-             position: absolute" Text="Cancel" OnClick="BtnCancel_Click" />
+             position: absolute; height: 26px;" Text="Cancel" OnClick="BtnCancel_Click" />
         <asp:Button ID="BtnSubmit" runat="server" style="z-index: 1; 
              left: 100px; 
              top: 250px; 

@@ -22,7 +22,7 @@ namespace SportEquipmentTesting
             List<clsStock> testList = new List<clsStock>();
             clsStock stock = new clsStock();
             stock.ProductId = 0;
-            stock.Detail = "Male";
+            stock.ProductDetails = "Male";
             stock.DateAcquired = DateTime.Now.Date;
             stock.Price = 9.99M;
             stock.Result = true;
@@ -47,7 +47,7 @@ namespace SportEquipmentTesting
             clsStockCollection stockList = new clsStockCollection();
             List<clsStock> testList = new List<clsStock>();
             clsStock stock = new clsStock();
-            stock.Detail = "Male";
+            stock.ProductDetails = "Male";
             stock.DateAcquired = DateTime.Now.Date;
             stock.Price = 9.99M;
             stock.Result = true;
@@ -80,9 +80,8 @@ namespace SportEquipmentTesting
             clsStockCollection stockList = new clsStockCollection();
             clsStock stock = new clsStock();
             Int32 primaryKey = 0;
-            stock.Detail = "Male";
+            stock.ProductDetails = "Male";
             stock.DateAcquired = DateTime.Now;
-            stock.Position = "admin";
             stock.Price = 9.99M;
             stock.Result = true;
 
@@ -100,9 +99,8 @@ namespace SportEquipmentTesting
             clsStockCollection stockList = new clsStockCollection();
             clsStock stock = new clsStock();
             Int32 primaryKey = 0;
-            stock.Detail = "Male";
+            stock.ProductDetails = "Male";
             stock.DateAcquired = DateTime.Now.Date;
-            stock.Position = "admin";
             stock.Price = 9.99M;
             stock.Result = true;
             stockList.ThisProduct = stock;
@@ -119,17 +117,15 @@ namespace SportEquipmentTesting
             clsStockCollection stockList = new clsStockCollection();
             clsStock stock = new clsStock();
             Int32 primaryKey;
-            stock.Detail = "Male";
+            stock.ProductDetails = "Male";
             stock.DateAcquired = DateTime.Now.Date;
-            stock.Position = "admin";
             stock.Price = 9.99M;
             stock.Result = true;
             stockList.ThisProduct = stock;
             primaryKey = stockList.Add();
             stock.ProductId = primaryKey;
-            stock.Detail = "Female";
+            stock.ProductDetails = "Female";
             stock.DateAcquired = DateTime.Now.Date;
-            stock.Position = "admin";
             stock.Price = 8.88M;
             stock.Result = false;
             stockList.ThisProduct = stock;
