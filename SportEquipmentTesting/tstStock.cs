@@ -5,18 +5,18 @@ using SportEquipmentClasses;
 namespace SportEquipmentTesting
 {
     [TestClass]
-    public class tstStock
+    public class TstStock
     {
         [TestMethod]
         public void InstanceOK()
         {
-            clsStock AnStock = new clsStock();
+            ClsStock AnStock = new ClsStock();
             Assert.IsNotNull(AnStock);
         }
         [TestMethod]
         public void ProductIDOK()
         {
-            clsStock AnProduct = new clsStock();
+            ClsStock AnProduct = new ClsStock();
             Int32 TestData = 1;
             AnProduct.ProductId = TestData;
             Assert.AreEqual(AnProduct.ProductId, TestData);
@@ -24,7 +24,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void ProductDetailsOK()
         {
-            clsStock AnDetail = new clsStock();
+            ClsStock AnDetail = new ClsStock();
             String TestData = "50";
             AnDetail.ProductDetails = TestData;
             Assert.AreEqual(AnDetail.ProductDetails, TestData);
@@ -32,7 +32,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void PriceOK()
         {
-            clsStock AnPrice = new clsStock();
+            ClsStock AnPrice = new ClsStock();
             Decimal TestData = 9.99M;
             AnPrice.Price = TestData;
             Assert.AreEqual(AnPrice.Price, TestData);
@@ -40,7 +40,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void DateAcquiredOK()
         {
-            clsStock Aquired = new clsStock();
+            ClsStock Aquired = new ClsStock();
             DateTime TestData = DateTime.Now.Date;
             Aquired.DateAcquired = TestData;
             Assert.AreEqual(Aquired.DateAcquired, TestData);
@@ -48,7 +48,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void InStockOK()
         {
-            clsStock InStock = new clsStock();
+            ClsStock InStock = new ClsStock();
             Boolean TestData = true;
             InStock.Result = TestData;
             Assert.AreEqual(InStock.Result, TestData);
@@ -56,7 +56,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void FindMethodOK()
         {
-            clsStock AnDetail = new clsStock();
+            ClsStock AnDetail = new ClsStock();
             Boolean Found = false;
             Int32 ProductID = 1;
             Found = AnDetail.Find(ProductID);
@@ -65,7 +65,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void TestProductIDFound()
         {
-            clsStock ProductID = new clsStock();
+            ClsStock ProductID = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
             Int32 ProductId = 1;
@@ -79,7 +79,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void TestDateAcquiredFound()
         {
-            clsStock ProductID = new clsStock();
+            ClsStock ProductID = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
             Int32 ProductId = 1;
@@ -93,7 +93,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void TestProductDetailsFound()
         {
-            clsStock ProductID = new clsStock();
+            ClsStock ProductID = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
             Int32 ProductId = 1;
@@ -107,7 +107,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void TestPriceFound()
         {
-            clsStock ProductID = new clsStock();
+            ClsStock ProductID = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
             Int32 ProductId = 1;
@@ -121,7 +121,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void TestResultFound()
         {
-            clsStock ProductID = new clsStock();
+            ClsStock ProductID = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
             Int32 ProductId = 1;

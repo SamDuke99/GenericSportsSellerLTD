@@ -2,7 +2,7 @@
 
 namespace SportEquipmentClasses
 {
-    public class clsStock
+    public class ClsStock
     {
         private DateTime mDateAcquired;
         private string mProductDetails;
@@ -65,9 +65,9 @@ namespace SportEquipmentClasses
                 mResult = value;
             }
         }
-        public bool Find(int ProductNo)
+        public bool Find(int ProductId)
         {
-            clsDataConnection DB = new clsDataConnection();
+            ClsDataConnection DB = new ClsDataConnection();
             DB.AddParameter("@ProductId", ProductId);
             DB.Execute("sproc_tblStock_FilterByProductID");
             if (DB.Count == 1)

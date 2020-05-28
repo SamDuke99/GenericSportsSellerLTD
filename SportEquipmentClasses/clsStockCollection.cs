@@ -6,25 +6,25 @@ using System.Threading.Tasks;
 
 namespace SportEquipmentClasses
 {
-    public class clsStockCollection
+    public class ClsStockCollection
     {
-        List<clsStock> stockList = new List<clsStock>();
-        clsStock thisProduct = new clsStock();
-        public List<clsStock> StockList { get { return stockList; } set { stockList = value; } }
-        public clsStock ThisProduct { get { return thisProduct; } set { thisProduct = value; } }
+        List<ClsStock> stockList = new List<ClsStock>();
+        ClsStock thisProduct = new ClsStock();
+        public List<ClsStock> StockList { get { return stockList; } set { stockList = value; } }
+        public ClsStock ThisProduct { get { return thisProduct; } set { thisProduct = value; } }
 
         public int Count { get { return stockList.Count; } set { } }
 
-        public clsStockCollection()
+        public ClsStockCollection()
         {
-            clsDataConnection db = new clsDataConnection();
+            ClsDataConnection db = new ClsDataConnection();
             db.Execute("sproc_tblStock_Select_All");
-            populateCollection(db);
+            PopulateCollection(db);
         }
 
         public int Add()
         {
-            clsDataConnection db = new clsDataConnection();
+            ClsDataConnection db = new ClsDataConnection();
             db.AddParameter("@productid", thisProduct.ProductId);
             db.AddParameter("@detail", thisProduct.ProductDetails);
             db.AddParameter("@price", thisProduct.Price);
@@ -35,14 +35,14 @@ namespace SportEquipmentClasses
 
         public void Delete()
         {
-            clsDataConnection db = new clsDataConnection();
+            ClsDataConnection db = new ClsDataConnection();
             db.AddParameter("@productid", thisProduct.ProductId);
             db.Execute("sproc_tblStock_Delete");
         }
 
         public void Update()
         {
-            clsDataConnection db = new clsDataConnection();
+            ClsDataConnection db = new ClsDataConnection();
             db.AddParameter("@productid", thisProduct.ProductId);
             db.AddParameter("@detail", thisProduct.ProductDetails);
             db.AddParameter("@price", thisProduct.Price);
@@ -53,27 +53,29 @@ namespace SportEquipmentClasses
 
         public void ReportByPosition(string pos)
         {
-            clsDataConnection db = new clsDataConnection();
+            ClsDataConnection db = new ClsDataConnection();
             db.AddParameter("@position", pos);
             db.Execute("sproc_tblStock_FilterByPosition");
-            populateCollection(db);
+            PopulateCollection(db);
         }
 
-        void populateCollection(clsDataConnection db)
+        void PopulateCollection(ClsDataConnection db)
         {
             Int32 index = 0;
             Int32 recordCount = 0;
             recordCount = db.Count;
-            stockList = new List<clsStock>();
+            stockList = new List<ClsStock>();
 
             while (index < recordCount)
             {
-                clsStock stock = new clsStock();
-                stock.ProductId = Convert.ToInt32(db.DataTable.Rows[index]["ProductID"]);
-                stock.DateAcquired = Convert.ToDateTime(db.DataTable.Rows[index]["DateAcquired"]);
-                stock.ProductDetails = Convert.ToString(db.DataTable.Rows[index]["Detail"]);
-                stock.Price = Convert.ToDecimal(db.DataTable.Rows[index]["Price"]);
-                stock.Result = Convert.ToBoolean(db.DataTable.Rows[index]["Result"]);
+                ClsStock stock = new ClsStock
+                {
+                    ProductId = Convert.ToInt32(db.DataTable.Rows[index]["ProductID"]),
+                    DateAcquired = Convert.ToDateTime(db.DataTable.Rows[index]["DateAcquired"]),
+                    ProductDetails = Convert.ToString(db.DataTable.Rows[index]["Detail"]),
+                    Price = Convert.ToDecimal(db.DataTable.Rows[index]["Price"]),
+                    Result = Convert.ToBoolean(db.DataTable.Rows[index]["Result"])
+                };
                 index++;
                 stockList.Add(stock);
             }

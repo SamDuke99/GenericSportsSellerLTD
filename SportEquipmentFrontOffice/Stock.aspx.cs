@@ -22,7 +22,7 @@ public partial class Stock : System.Web.UI.Page
     }
     void DisplayStock()
     {
-        clsStockCollection stockList = new clsStockCollection();
+        ClsStockCollection stockList = new ClsStockCollection();
         stockList.ThisProduct.Find(ProductId);
         txtProductId.Text = stockList.ThisProduct.ProductId.ToString();
         txtProductDetails.Text = stockList.ThisProduct.ProductDetails.ToString();
@@ -33,12 +33,14 @@ public partial class Stock : System.Web.UI.Page
 
     protected void BtnSubmit_Click(object sender, EventArgs e)
     {
-        clsStock stock = new clsStock();
-        stock.ProductId = Convert.ToInt32(txtProductID.Text);
-        stock.ProductDetails = txtProductDetails.Text;
-        stock.Price = Convert.ToDecimal(txtPrice.Text);
-        stock.DateAcquired = Convert.ToDateTime(txtDateAcquired.Text);
-        stock.Result = Convert.ToBoolean(txtInStock.Text);
+        ClsStock stock = new ClsStock
+        {
+            ProductId = Convert.ToInt32(txtProductId.Text),
+            ProductDetails = txtProductDetails.Text,
+            Price = Convert.ToDecimal(txtPrice.Text),
+            DateAcquired = Convert.ToDateTime(txtDateAcquired.Text),
+            Result = Convert.ToBoolean(txtInStock.Text)
+        };
         Session["stock"] = stock;
         Response.Write("Stock.aspx");
 
@@ -60,9 +62,9 @@ public partial class Stock : System.Web.UI.Page
             return;
         }
 
-        if (stock.ValidDateAcquired(DateAcquired) != "")
+        if (stock.ValidDateAcquired() != "")
         {
-            lblDateAcquired.Text = stock.ValidDateAcquired(DateAcquired);
+            lblDateAcquired.Text = stock.ValidDateAcquired();
             return;
         }
 
@@ -77,7 +79,7 @@ public partial class Stock : System.Web.UI.Page
         stock.ProductDetails = ProductDetails;
         stock.Price = Price;
         stock.Result = Result;
-        clsStockCollection stockList = new clsStockCollection();
+        ClsStockCollection stockList = new ClsStockCollection();
 
         if (ProductId == -1)
         {
@@ -101,7 +103,7 @@ public partial class Stock : System.Web.UI.Page
     }
     protected void BtnFind_Click(object sender, EventArgs e)
     {
-        clsStock stock = new clsStock();
+        ClsStock stock = new ClsStock();
 
         // Checks if the input is correct
         if (stock.ValidProductId(txtProductId.Text) != "")

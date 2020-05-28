@@ -5,16 +5,12 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SportEquipmentClasses
 {
-    class clsDataConnection
+    class ClsDataConnection
     {
         //connection object used to connect to the database
         SqlConnection connectionToDB = new SqlConnection();
@@ -29,12 +25,12 @@ namespace SportEquipmentClasses
         //string variable used to store the connection string
         private string connectionString;
 
-        public clsDataConnection()
+        public ClsDataConnection()
         {
             GetConString(GetDBName());
         }
 
-        public clsDataConnection(string DBLocation)
+        public ClsDataConnection(string DBLocation)
         {
             GetConString(DBLocation);
         }
@@ -182,17 +178,21 @@ namespace SportEquipmentClasses
                 dataCommand.Parameters.Add(SQLParams[Counter]);
             }
             //create an instance of the SqlParameter class
-            SqlParameter returnValue = new SqlParameter();
-            //set the direction as the return value
-            returnValue.Direction = ParameterDirection.ReturnValue;
+            SqlParameter returnValue = new SqlParameter
+            {
+                //set the direction as the return value
+                Direction = ParameterDirection.ReturnValue
+            };
             //add this parameter to the Command builder
             dataCommand.Parameters.Add(returnValue);
             //set the command type as stored procedure
             dataCommand.CommandType = CommandType.StoredProcedure;
             //initialise the data adapter
-            dataChannel = new SqlDataAdapter(SProcName, connectionToDB);
-            //set the select command property for the data adapter
-            dataChannel.SelectCommand = dataCommand;
+            dataChannel = new SqlDataAdapter(SProcName, connectionToDB)
+            {
+                //set the select command property for the data adapter
+                SelectCommand = dataCommand
+            };
             //use the copmmand builder to generate the sql insert delete etc
             commandBuilder = new SqlCommandBuilder(dataChannel);
             //fill the data adapter

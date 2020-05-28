@@ -6,26 +6,28 @@ using System.Collections.Generic;
 namespace SportEquipmentTesting
 {
     [TestClass]
-    public class tstStockCollection
+    public class TstStockCollection
     {
         [TestMethod]
         public void InstanceOK()
         {
-            clsStockCollection stockList = new clsStockCollection();
+            ClsStockCollection stockList = new ClsStockCollection();
             Assert.IsNotNull(stockList);
         }
 
         [TestMethod]
         public void StockListOK()
         {
-            clsStockCollection staffList = new clsStockCollection();
-            List<clsStock> testList = new List<clsStock>();
-            clsStock stock = new clsStock();
-            stock.ProductId = 0;
-            stock.ProductDetails = "Male";
-            stock.DateAcquired = DateTime.Now.Date;
-            stock.Price = 9.99M;
-            stock.Result = true;
+            ClsStockCollection staffList = new ClsStockCollection();
+            List<ClsStock> testList = new List<ClsStock>();
+            ClsStock stock = new ClsStock
+            {
+                ProductId = 0,
+                ProductDetails = "Male",
+                DateAcquired = DateTime.Now.Date,
+                Price = 9.99M,
+                Result = true
+            };
             testList.Add(stock);
             staffList.StockList = testList;
             Assert.AreEqual(staffList.StockList, testList);
@@ -34,7 +36,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void CountPropertyOK()
         {
-            clsStockCollection stockList = new clsStockCollection();
+            ClsStockCollection stockList = new ClsStockCollection();
             Int32 someCount = 0;
             Assert.AreNotEqual(someCount, stockList.Count);
         }
@@ -44,13 +46,15 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void ListAndCountOK()
         {
-            clsStockCollection stockList = new clsStockCollection();
-            List<clsStock> testList = new List<clsStock>();
-            clsStock stock = new clsStock();
-            stock.ProductDetails = "Male";
-            stock.DateAcquired = DateTime.Now.Date;
-            stock.Price = 9.99M;
-            stock.Result = true;
+            ClsStockCollection stockList = new ClsStockCollection();
+            List<ClsStock> testList = new List<ClsStock>();
+            ClsStock stock = new ClsStock
+            {
+                ProductDetails = "Male",
+                DateAcquired = DateTime.Now.Date,
+                Price = 9.99M,
+                Result = true
+            };
             testList.Add(stock);
             stockList.StockList = testList;
             Assert.AreEqual(stockList.Count, testList.Count);
@@ -59,7 +63,7 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void ReportByPositionDataFound()
         {
-            clsStockCollection filteredCollection = new clsStockCollection();
+            ClsStockCollection filteredCollection = new ClsStockCollection();
             Boolean ok = true;
             filteredCollection.ReportByPosition("admin");
 
@@ -77,8 +81,8 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void AddMethodOK()
         {
-            clsStockCollection stockList = new clsStockCollection();
-            clsStock stock = new clsStock();
+            ClsStockCollection stockList = new ClsStockCollection();
+            ClsStock stock = new ClsStock();
             Int32 primaryKey = 0;
             stock.ProductDetails = "Male";
             stock.DateAcquired = DateTime.Now;
@@ -96,8 +100,8 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void DeleteMethodOK()
         {
-            clsStockCollection stockList = new clsStockCollection();
-            clsStock stock = new clsStock();
+            ClsStockCollection stockList = new ClsStockCollection();
+            ClsStock stock = new ClsStock();
             Int32 primaryKey = 0;
             stock.ProductDetails = "Male";
             stock.DateAcquired = DateTime.Now.Date;
@@ -114,8 +118,8 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void UpdateMethodOK()
         {
-            clsStockCollection stockList = new clsStockCollection();
-            clsStock stock = new clsStock();
+            ClsStockCollection stockList = new ClsStockCollection();
+            ClsStock stock = new ClsStock();
             Int32 primaryKey;
             stock.ProductDetails = "Male";
             stock.DateAcquired = DateTime.Now.Date;

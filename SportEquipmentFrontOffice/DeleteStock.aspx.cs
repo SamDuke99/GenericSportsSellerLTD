@@ -14,16 +14,16 @@ public partial class DeleteStock : System.Web.UI.Page
     {
         ProductId = Convert.ToInt32(Session["ProductId"]);
     }
-    protected void btnYes_Click(object sender, EventArgs e)
+    protected void BtnYes_Click(object sender, EventArgs e)
     {
-        clsStockCollection stockList = new clsStockCollection();
+        ClsStockCollection stockList = new ClsStockCollection();
         stockList.ThisProduct.Find(ProductId);
         stockList.Delete();
-        Response.Redirect("AnDetailList.aspx");
+        Response.Redirect("StockList.aspx");
     }
 
-    protected void btnNo_Click(object sender, EventArgs e)
+    protected void BtnNo_Click(object sender, EventArgs e)
     {
-        Response.Redirect("AnDetailList.aspx");
+        Response.Redirect("StockList.aspx");
     }
 }
