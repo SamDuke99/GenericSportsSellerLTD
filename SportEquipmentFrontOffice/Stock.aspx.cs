@@ -12,24 +12,9 @@ public partial class Stock : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        ProductId = Convert.ToInt32(Session["ProductID"]);
-        if (IsPostBack == false)
-        {
-            if (ProductId != -1)
-            {
-                DisplayStock();
-            }
-        }
-    }
-    void DisplayStock()
-    {
-        ClsStockCollection stockList = new ClsStockCollection();
-        stockList.ThisProduct.Find(ProductId);
-        txtProductId.Text = stockList.ThisProduct.ProductId.ToString();
-        txtProductDetails.Text = stockList.ThisProduct.ProductDetails.ToString();
-        txtPrice.Text = stockList.ThisProduct.Price.ToString();
-        txtDateAcquired.Text = stockList.ThisProduct.DateAcquired.ToString();
-        txtInStock.Text = stockList.ThisProduct.Result.ToString();
+        ClsStock Stock = new ClsStock();
+        Stock = (ClsStock)Session["Stock"];
+        Response.Write(Stock.ProductId);
     }
 
     protected void BtnSubmit_Click(object sender, EventArgs e)
@@ -42,7 +27,7 @@ public partial class Stock : System.Web.UI.Page
             DateAcquired = Convert.ToDateTime(txtDateAcquired.Text),
             Result = Convert.ToBoolean(txtInStock.Text)
         };
-        Session["stock"] = Stock;
+        Session["Stock"] = Stock;
         Response.Write("Stock.aspx");
 
         if (Stock.ValidProductId(ProductId) != "")
