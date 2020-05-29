@@ -56,10 +56,10 @@ namespace SportEquipmentTesting
         [TestMethod]
         public void FindMethodOK()
         {
-            ClsStock AnDetail = new ClsStock();
+            ClsStock Stock = new ClsStock();
             Boolean Found = false;
             Int32 ProductID = 1;
-            Found = AnDetail.Find(ProductID);
+            Found = Stock.Find(ProductID);
             Assert.IsTrue(Found);
         }
         [TestMethod]

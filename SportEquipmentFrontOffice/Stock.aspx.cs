@@ -9,6 +9,7 @@ using SportEquipmentClasses;
 public partial class Stock : System.Web.UI.Page
 {
     Int32 ProductId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
         ProductId = Convert.ToInt32(Session["ProductID"]);
@@ -33,7 +34,7 @@ public partial class Stock : System.Web.UI.Page
 
     protected void BtnSubmit_Click(object sender, EventArgs e)
     {
-        ClsStock stock = new ClsStock
+        ClsStock Stock = new ClsStock
         {
             ProductId = Convert.ToInt32(txtProductId.Text),
             ProductDetails = txtProductDetails.Text,
@@ -41,59 +42,14 @@ public partial class Stock : System.Web.UI.Page
             DateAcquired = Convert.ToDateTime(txtDateAcquired.Text),
             Result = Convert.ToBoolean(txtInStock.Text)
         };
-        Session["stock"] = stock;
+        Session["stock"] = Stock;
         Response.Write("Stock.aspx");
 
-        if (stock.ValidProductId(ProductId) != "")
+        if (Stock.ValidProductId(ProductId) != "")
         {
-            lblError.Text = stock.ValidProductId(ProductId);
+            lblError.Text = Stock.ValidProductId(ProductId);
             return;
         }
-
-        if (stock.ValidProductDetails(ProductDetails) != "")
-        {
-            lblProductDetails.Text = stock.ValidProductDetails(ProductDetails);
-            return;
-        }
-
-        if (stock.ValidPrice(txtPrice) != "")
-        {
-            lblPrice.Text = stock.ValidPrice(txtPrice);
-            return;
-        }
-
-        if (stock.ValidDateAcquired() != "")
-        {
-            lblDateAcquired.Text = stock.ValidDateAcquired();
-            return;
-        }
-
-        if (stock.ValidInStock(txtInStock) != "")
-        {
-            lblInStock.Text = stock.ValidInStock(txtInStock);
-            return;
-        }
-
-        stock.ProductId = Convert.ToInt32(ProductId);
-        stock.DateAcquired = Convert.ToDateTime(DateAcquired);
-        stock.ProductDetails = ProductDetails;
-        stock.Price = Price;
-        stock.Result = Result;
-        ClsStockCollection stockList = new ClsStockCollection();
-
-        if (ProductId == -1)
-        {
-            stockList.ThisProduct = stock;
-            stockList.Add();
-        }
-        else
-        {
-            stockList.ThisProduct.Find(ProductId);
-            stockList.ThisProduct = stock;
-            stockList.Update();
-        }
-
-        Response.Redirect("StockList.aspx");
 
     }
 
@@ -103,36 +59,18 @@ public partial class Stock : System.Web.UI.Page
     }
     protected void BtnFind_Click(object sender, EventArgs e)
     {
-        ClsStock stock = new ClsStock();
+        ClsStock Stock = new ClsStock();
+        Int32 ProductID;
+        Boolean Found = false;
+        ProductID = Convert.ToInt32(txtProductId.Text);
+        Found = Stock.Find(ProductId);
 
-        // Checks if the input is correct
-        if (stock.ValidProductId(txtProductId.Text) != "")
+        if (Found == true)
         {
-            lblError.Text = stock.ValidProductId(txtProductId.Text);
-            txtProductDetails.Text = "";
-            txtPrice.Text = "";
-            txtDateAcquired.Text = "";
-            txtInStock.Text = "";
-            return;
-        }
-
-        Int32 ProductId = Convert.ToInt32(txtProductId.Text);
-
-        bool found = stock.Find(ProductId);
-        if (found)
-        {
-            txtProductDetails.Text = stock.ProductDetails;
-            txtPrice.Text = ""; 
-            txtDateAcquired.Text = Convert.ToString(stock.DateAcquired);
-            txtInStock.Text = "";
-        }
-        else
-        {
-            txtProductDetails.Text = "";
-            txtPrice.Text = "";
-            txtDateAcquired.Text = Convert.ToString(stock.DateAcquired);
-            txtInStock.Text = "";
-            lblError.Text = "Record with provided ID does not exist";
+            txtProductDetails.Text = Stock.ProductDetails;
+            txtDateAcquired.Text = Stock.DateAcquired.ToString();
+            txtPrice.Text = Stock.Price.ToString();
+            txtInStock.Text = Stock.Result.ToString();
         }
     }
 }

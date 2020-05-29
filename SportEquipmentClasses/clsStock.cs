@@ -109,38 +109,9 @@ namespace SportEquipmentClasses
 
             return errorMsg;
         }
-        public string ValidProductDetails(string ProductDetails)
-        {
-            if (ProductDetails.Length == 0)
-                return "Product Details must be at least 1 character long!";
+        
 
-            if (ProductDetails.Length > 50)
-                return "Product Details cannot be longer than 50 characters!";
-
-            foreach (char c in ProductDetails)
-            {
-                if ((!Char.IsLetter(c) && c != ' ') || c >= sbyte.MaxValue)
-                    return "Product Details must contain only ascii letters!";
-            }
-
-            return "";
-        }
-
-        public string ValidDateAcquired(string DateAcquired)
-        {
-            string errorMsg = "";
-
-            try
-            {
-                DateTime dateTemp = Convert.ToDateTime(DateAcquired);
-            }
-            catch
-            {
-                errorMsg = "Date should be in DD/MM/YYYY format!";
-            }
-
-            return errorMsg;
-        }
+        
 
     }
 }

@@ -12,9 +12,14 @@
             <asp:Label ID="Label1" runat="server" Text="Are you sure you want to delete this record?"></asp:Label>
             <br />
         </div>
-        <asp:Button ID="btnYes" runat="server" OnClick="btnYes_Click" Text="Yes" />
-&nbsp;&nbsp;
-        <asp:Button ID="btnNo" runat="server" OnClick="btnNo_Click" Text="No" />
+        <asp:Button ID="BtnNo" runat="server" style="z-index: 1; 
+             left: 90px; 
+             top: 50px; 
+             position: absolute; height: 26px;" Text="No" OnClick="BtnNo_Click" />
+        <asp:Button ID="BtnYes" runat="server" style="z-index: 1; 
+             left: 50px; 
+             top: 50px; 
+             position: absolute; height: 26px;" Text="Yes" OnClick="BtnYes_Click" />
     </form>
 </body>
 </html>
