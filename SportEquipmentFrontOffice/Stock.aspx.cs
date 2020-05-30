@@ -12,9 +12,7 @@ public partial class Stock : System.Web.UI.Page
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        ClsStock Stock = new ClsStock();
-        Stock = (ClsStock)Session["Stock"];
-        Response.Write(Stock.ProductId);
+        
     }
 
     protected void BtnSubmit_Click(object sender, EventArgs e)
@@ -28,7 +26,7 @@ public partial class Stock : System.Web.UI.Page
             Result = Convert.ToBoolean(txtInStock.Text)
         };
         Session["Stock"] = Stock;
-        Response.Write("Stock.aspx");
+        Response.Write("StockViewer.aspx");
 
         if (Stock.ValidProductId(ProductId) != "")
         {
