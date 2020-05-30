@@ -7,6 +7,11 @@ namespace SportEquipmentTesting
     [TestClass]
     public class TstStock
     {
+        string ProductDetails = "Male";
+        string Price = "9.99";
+        string InStock = "true";
+        string DateAcquired = DateTime.Now.Date.ToString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -131,6 +136,14 @@ namespace SportEquipmentTesting
                 OK = false;
             }
             Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            Error = stock.Valid(ProductDetails, DateAcquired, Price, InStock);
+            Assert.AreEqual(Error, "");
         }
     }
 }
