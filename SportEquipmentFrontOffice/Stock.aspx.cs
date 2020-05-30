@@ -55,5 +55,13 @@ public partial class Stock : System.Web.UI.Page
             txtPrice.Text = Stock.Price.ToString();
             txtInStock.Text = Stock.Result.ToString();
         }
+        else
+        {
+            txtProductDetails.Text = "";
+            txtDateAcquired.Text = "";
+            txtPrice.Text = "";
+            txtInStock.Text = "";
+            lblError.Text = "Provided ProductID does not exist. Please enter a valid ProductID!";
+        }
     }
 }

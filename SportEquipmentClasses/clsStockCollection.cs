@@ -51,14 +51,6 @@ namespace SportEquipmentClasses
             db.Execute("sproc_tblStock_Update");
         }
 
-        public void ReportByPosition(string pos)
-        {
-            ClsDataConnection db = new ClsDataConnection();
-            db.AddParameter("@position", pos);
-            db.Execute("sproc_tblStock_FilterByPosition");
-            PopulateCollection(db);
-        }
-
         void PopulateCollection(ClsDataConnection db)
         {
             Int32 index = 0;
