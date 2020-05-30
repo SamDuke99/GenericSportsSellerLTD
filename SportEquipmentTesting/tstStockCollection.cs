@@ -61,24 +61,6 @@ namespace SportEquipmentTesting
         }
 
         [TestMethod]
-        public void ReportByPositionDataFound()
-        {
-            ClsStockCollection filteredCollection = new ClsStockCollection();
-            Boolean ok = true;
-            filteredCollection.ReportByPosition("admin");
-
-            if (filteredCollection.Count >= 2)
-            {
-                if (filteredCollection.StockList[0].ProductId != 1 || filteredCollection.StockList[1].ProductId != 10)
-                    ok = false;
-            }
-            else
-                ok = false;
-
-            Assert.IsTrue(ok);
-        }
-
-        [TestMethod]
         public void AddMethodOK()
         {
             ClsStockCollection stockList = new ClsStockCollection();

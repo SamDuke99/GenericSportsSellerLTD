@@ -76,7 +76,7 @@ namespace SportEquipmentClasses
                 mDateAcquired = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAcquired"]);
                 mProductDetails = Convert.ToString(DB.DataTable.Rows[0]["ProductDetails"]);
                 mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
-                mResult = Convert.ToBoolean(DB.DataTable.Rows[0]["Result"]);
+                mResult = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
                 return true;
             }
             
@@ -84,30 +84,6 @@ namespace SportEquipmentClasses
             {
                 return false;
             }
-        }
-
-        
-
-        public string ValidProductId(int ProductId)
-        {
-            string errorMsg = "";
-            int value;
-            try
-            {
-                value = Convert.ToInt32(ProductId);
-            }
-            catch (System.FormatException)
-            {
-                errorMsg = "ID must be a positive integer!";
-                return errorMsg;
-            }
-
-            if (value < 0 || value > 256)
-            {
-                errorMsg = "ID must be a positive integer not greater than 256!";
-            }
-
-            return errorMsg;
         }
     }
 }

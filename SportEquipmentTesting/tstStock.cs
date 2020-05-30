@@ -98,7 +98,7 @@ namespace SportEquipmentTesting
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = ProductID.Find(ProductId);
-            if (ProductID.ProductDetails != "Mens")
+            if (ProductID.ProductDetails != "Male")
             {
                 OK = false;
             }
