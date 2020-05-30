@@ -84,7 +84,7 @@ namespace SportEquipmentTesting
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = ProductID.Find(ProductId);
-            if (ProductID.DateAcquired != Convert.ToDateTime("16/9/2015"))
+            if (ProductID.DateAcquired != Convert.ToDateTime("16/09/2015"))
             {
                 OK = false;
             }
