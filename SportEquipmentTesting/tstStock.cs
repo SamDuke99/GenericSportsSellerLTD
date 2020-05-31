@@ -142,8 +142,65 @@ namespace SportEquipmentTesting
         {
             ClsStock stock = new ClsStock();
             String Error = "";
-            Error = stock.Valid(ProductDetails, DateAcquired, Price, InStock);
+            Error = stock.Valid(ProductDetails, DateAcquired);
             Assert.AreEqual(Error, "");
         }
+        [TestMethod]
+        public void ProductDetailsMinLessOne()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            string ProductDetails = "";
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductDetailsMin()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            string ProductDetails = "a";
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductDetailsMinPlusOne()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            string ProductDetails = "aa"; 
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDetailsMaxLessOne()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            string ProductDetails = "aaaaaaaaa";
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductDetailsMax()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            string ProductDetails = "aaaaaaaaaa";
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ProductDetailsMid()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            string ProductDetails = "aaaaa";
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreEqual(Error, "");
+        }
+
     }
 }

@@ -85,9 +85,15 @@ namespace SportEquipmentClasses
                 return false;
             }
         }
-        public string Valid(string ProductDetails, string DateAcquired, string Price, string InStock)
+        public string Valid(string ProductDetails, string DateAcquired)
         {
-            return "";
+            String Error = "";
+
+        if (ProductDetails.Length == 0)
+            {
+                Error = Error + "The Product Details should not be blank: ";
+            }
+            return Error;
         }
 }
 }
