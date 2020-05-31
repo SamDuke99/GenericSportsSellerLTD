@@ -88,11 +88,34 @@ namespace SportEquipmentClasses
         public string Valid(string ProductDetails, string DateAcquired)
         {
             String Error = "";
+            DateTime DateTemp;
 
-        if (ProductDetails.Length == 0)
+            if (ProductDetails.Length == 0)
             {
-                Error = Error + "The Product Details should not be blank: ";
+                Error = Error + "The Product Details may not be blank: ";
             }
+            if (ProductDetails.Length > 10)
+            {
+                Error = Error + "The Product Details must be less than 6 characters : ";
+            }
+            try
+            {
+
+                DateTemp = Convert.ToDateTime(DateAcquired);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date connot be in the past: ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date: ";
+            }
+
             return Error;
         }
 }

@@ -8,8 +8,6 @@ namespace SportEquipmentTesting
     public class TstStock
     {
         string ProductDetails = "Male";
-        string Price = "9.99";
-        string InStock = "true";
         string DateAcquired = DateTime.Now.Date.ToString();
 
         [TestMethod]
@@ -168,7 +166,7 @@ namespace SportEquipmentTesting
         {
             ClsStock stock = new ClsStock();
             String Error = "";
-            string ProductDetails = "aa"; 
+            string ProductDetails = "aa";
             Error = stock.Valid(ProductDetails, DateAcquired);
             Assert.AreEqual(Error, "");
         }
@@ -201,6 +199,75 @@ namespace SportEquipmentTesting
             Error = stock.Valid(ProductDetails, DateAcquired);
             Assert.AreEqual(Error, "");
         }
+        [TestMethod]
+        public void DateAcquiredExtremeMin()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string DateAcquired = TestDate.ToString();
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAcquiredMinLessOne()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string DateAcquired = TestDate.ToString();
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAcquiredMin()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DateAcquired = TestDate.ToString();
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAcquiredMinPlusOne()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string DateAcquired = TestDate.ToString();
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAcquiredExtremeMax()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string DateAcquired = TestDate.ToString();
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void DateAcquiredInvalidData()
+        {
+            ClsStock stock = new ClsStock();
+            String Error = "";
+            string DateAcquired = "This is not a date!";
+            Error = stock.Valid(ProductDetails, DateAcquired);
+            Assert.AreNotEqual(Error, "");
+        }
+
 
     }
 }

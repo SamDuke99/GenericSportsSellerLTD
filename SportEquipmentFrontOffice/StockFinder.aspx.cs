@@ -15,17 +15,26 @@ public partial class StockFinder : System.Web.UI.Page
     }
     protected void BtnSubmit_Click(object sender, EventArgs e)
     {
-        ClsStock Stock = new ClsStock
+        ClsStock stock = new ClsStock();
+        string ProductDetails = txtProductDetails.Text;
+        string Price = txtPrice.Text;
+        string DateAcquired = txtDateAcquired.Text;
+        string InStock = txtInStock.Text;
+        string Error = "";
+        Error = stock.Valid(ProductDetails, DateAcquired);
+        if (Error == "")
         {
-            ProductId = Convert.ToInt32(txtProductId.Text),
-            ProductDetails = txtProductDetails.Text,
-            Price = Convert.ToDecimal(txtPrice.Text),
-            DateAcquired = Convert.ToDateTime(txtDateAcquired.Text),
-            Result = Convert.ToBoolean(txtInStock.Text)
-        };
-        Session["Stock"] = Stock;
-        Response.Write("StockViewer.aspx");
-
+            stock.ProductDetails = ProductDetails;
+            stock.Price = Convert.ToDecimal(txtPrice.Text);
+            stock.DateAcquired = Convert.ToDateTime(txtDateAcquired.Text);
+            stock.Result = Convert.ToBoolean(txtInStock.Text);
+            Session["Stock"] = stock;
+            Response.Write("StockViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void BtnCancel_Click(object sender, EventArgs e)
