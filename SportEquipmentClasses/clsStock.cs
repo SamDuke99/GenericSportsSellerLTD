@@ -75,7 +75,7 @@ namespace SportEquipmentClasses
                 mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
                 mDateAcquired = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAcquired"]);
                 mProductDetails = Convert.ToString(DB.DataTable.Rows[0]["ProductDetails"]);
-                mPrice = Convert.ToSByte(DB.DataTable.Rows[0]["Price"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
                 mResult = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
                 return true;
             }
