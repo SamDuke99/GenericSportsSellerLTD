@@ -10,18 +10,18 @@ namespace SportEquipmentTesting
         public void InstanceOK()
             
         {
-            clsReview AReview = new clsReview();
-            Assert.IsNotNull(AReview);
+            clsReview Review = new clsReview();
+            Assert.IsNotNull(Review);
 
         }
 
         [TestMethod]
         public void ReviewTrustedPropertyOk()
         {
-            clsReview AReview = new clsReview();
+            clsReview Review = new clsReview();
             Boolean TestData = true;
             Review.ReviewTrusted = TestData;
-            Assert.AreEqual(AReview.ReviewTrusted, TestData);
+            Assert.AreEqual(Review.ReviewTrusted, TestData);
 
         }
 
@@ -29,13 +29,13 @@ namespace SportEquipmentTesting
         public void ReviewDatePostedPropertyOK()
             
         {
-            clsReview AReview = new clsReview();
+            clsReview Review = new clsReview();
             DateTime TestData = DateTime.Now.Date;
-            AReview.ReviewDatePosted = TestData;
-            Assert.AreEqual(AReview.ReviewDatePosted, TestData);
+            Review.ReviewDatePosted = TestData;
+            Assert.AreEqual(Review.ReviewDatePosted, TestData);
         }
     
-          [TestMethod]
+        [TestMethod]
         public void CustomerIDOK()
         {
             //create an instance of the class we want to create
@@ -51,43 +51,46 @@ namespace SportEquipmentTesting
             Assert.AreEqual(ACustomer.CustomerID, TestData);
         }
         
-          [TestMethod]
+        [TestMethod]
         public void ReviewIDOK()
         {
             //create an instance of the class we want to create
-            clsReview AReview = new clsReview();
+            clsReview Review = new clsReview();
+            
             //create some test data to assign to the property
             Int32 TestData = 4;
+            
             //assign the data to the property
-            AReview.ReviewID = TestData;
+            Review.ReviewID = TestData;
+            
             //test to see that the two values are the same
-            Assert.AreEqual(AReview.ReviewID, TestData);
+            Assert.AreEqual(Review.ReviewID, TestData);
         }
         
         [TestMethod]
         public void ReviewContentOK()
         {
             //create an instance of the class we want to create
-            clsReview AReview = new clsReview();
+            clsReview Review = new clsReview();
             
             //create some test data to assign to the property
             string TestData = "Twas great";
             
             //assign the data to the property
-            AReview.ReviewContent = TestData;
+            Review.ReviewContent = TestData;
             
             //test to see that the two values are the same
-            Assert.AreEqual(AReview.ReviewContent, TestData);
+            Assert.AreEqual(Review.ReviewContent, TestData);
         }
         
         [TestMethod]
         public void ReviewRatingOK()
             
         {
-            clsReview AReview = new clsReview();
+            clsReview Review = new clsReview();
             Decimal TestData = 5.0;
-            AnPrice.ReviewRating = TestData;
-            Assert.AreEqual(AReview.ReviewRating, TestData);
+            Review.ReviewRating = TestData;
+            Assert.AreEqual(Review.ReviewRating, TestData);
         }
         
         [TestMethod]
@@ -96,7 +99,7 @@ namespace SportEquipmentTesting
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
-            clsReview AReview = new clsReview();
+            clsReview Review = new clsReview();
             //boolean to store the result of the validation 
             Boolean Found = false;
             Boolean Look = false;
@@ -105,7 +108,7 @@ namespace SportEquipmentTesting
             Int32 ReviewID = 4;
             //invoke the method
             Found = ACustomer.Find(CustomerID);
-            Look = AReview.Find(ReviewID);
+            Look = Review.Find(ReviewID);
             //test to see that the result is correct
             Assert.IsTrue(Found);
             Assert.IsTrue(Look);
@@ -116,7 +119,7 @@ namespace SportEquipmentTesting
         {
             //create an instance of the class we want to create
             clsCustomer ACustomer = new clsCustomer();
-            clsReview AReview = new clsReview();
+            clsReview Review = new clsReview();
             //boolean variable to find the result of the search
             Boolean Found = false;
             Boolean Look = false;
@@ -127,12 +130,12 @@ namespace SportEquipmentTesting
             Int32 ReviewID = 9;
             //invoke the method
             Found = ACustomer.Find(CustomerID);
-            Look =  AReview.Find(ReviewID);
+            Look =  Review.Find(ReviewID);
             if (ACustomer.CustomerID != 3)
                 {
                 OK = false;
                 }
-            if (AReview.ReviewID != 9)
+            if (Review.ReviewID != 9)
                 {
                 OK = false:
                 }
