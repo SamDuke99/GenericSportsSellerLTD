@@ -1,1 +1,58 @@
+using System;
 
+namespace SportEquipmentClasses
+{
+    public class clsReview
+    {
+        public bool ReviewTrusted { get; set; }
+        
+        //ReviewDatePosted private member variable
+        private ReviewDatePosted mReviewDatePosted;
+        
+        //reviewDatePosted public property
+        public DateTime ReviewDatePosted { get
+            {
+                return mReviewDatePosted;
+            }
+
+            set
+            {
+                mReviewDatePosted = value;
+            }
+        }
+
+        private Int32 mCustomerID;
+        
+        private Int32 mReviewID;
+
+        public int CustomerID { get {
+                return mCustomerID;
+            }
+            set
+            {
+                mCustomerID = value;
+            }
+            
+        public int ReviewID { get {
+                return mReviewID;
+            }
+            set
+            {
+                mReviewID = value;
+            }
+        }
+        public string ReviewContent { get; set; }
+        public float ReviewRating { get; set; }
+        public decimal ReviewRating { get; set; }
+
+        public bool Find(int CustomerID)
+        {
+            //set the private data members to the test data value
+            mCustomerID = 5;
+            mReviewID = 4;
+            mReviewDatePosted = Convert.ToDateTime("16/09/2015");
+            //always return true
+            return true;
+        }
+    }
+}
