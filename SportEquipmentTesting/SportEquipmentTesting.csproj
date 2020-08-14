@@ -55,6 +55,8 @@
     <Compile Include="tstOrder.cs" />
 
     <Compile Include="tstCustomer.cs" />
+    
+    <Compile Include="tstReview.cs" />
 
   </ItemGroup>
   <ItemGroup>
